@@ -20,6 +20,7 @@ gap: 0;
         gap: 0px;
         opacity: 0px;
         background: #ffffff;
+        
        
       
         .containerContent {
@@ -28,7 +29,7 @@ gap: 0;
           gap: 8px;
           border-bottom: 1px solid #1616161a;
           padding-bottom: 14px;
-          margin: 14px 20px 0px 24px;
+          margin: 14px 20px 0px 20px;
       
           .titleCard {
             font-family: Poppins;
@@ -66,15 +67,15 @@ gap: 0;
           flex-direction: row;
           justify-content: space-between;
           color: #161616;
-        
+          padding: 0px 14px 14px 20px;
           align-items: center;
-          padding: 14px 20px 14px 24px;
+          
       
           .statusWrapper {
             display: flex;
             flex-direction: row;
             gap: 14px;
-            padding: 14px;
+            
       
             .priorityContainer {
               display: flex;
