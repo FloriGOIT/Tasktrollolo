@@ -1,0 +1,190 @@
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+  padding: 20px;
+
+  .modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    width: 350px;
+    height: 522px;
+    border-radius: 8px;
+    max-width: calc(100vw);
+    max-height: calc(100vh);
+    background-color: #f5f5f5;
+    color: #000000;
+
+    
+    .cardContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 24px;
+
+    
+      .cardName {
+        h3 {
+          margin: 0px;
+        }
+      }
+
+      .inputContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        font-family: Verdana;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21.88px;
+       
+
+        input {
+          width: 302px;
+          height: 49px;
+          gap: 0px;
+          border-radius: 8px;
+          opacity: 0px;
+          border: 1px solid #bedbb0;
+          box-shadow: 0px 4px 4px 0px #00000040;
+          outline: none;
+          padding: 0px 18px;
+        }
+        input::placeholder {
+          padding: 0px; 
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 21px;
+          letter-spacing: -0.02em;
+          text-align: left;
+          color: #161616;
+        }
+      
+      }
+      .statusContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        box-sizing: border-box;
+
+        .labelContainer {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 4px;
+          box-sizing: border-box;
+
+          .labelColor {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            .labelColor1 {
+              background-color: aqua;
+              border-radius: 50%;
+              width: 14px;
+              height: 14px;
+              opacity: 0px;
+            }
+            .labelColor2 {
+              background-color: #c40404;
+              border-radius: 50%;
+              width: 14px;
+              height: 14px;
+              opacity: 0px;
+            }
+            .labelColor3 {
+              background-color: #000000;
+              border-radius: 50%;
+              width: 14px;
+              height: 14px;
+              opacity: 0px;
+            }
+            .labelColor4 {
+              background-color: #8fa1d0;
+              border-radius: 50%;
+              width: 14px;
+              height: 14px;
+              opacity: 0px;
+              border: 1px solid #8fa1d0;
+            }
+          }
+        }
+        .deadlineContainer {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          gap: 4px;
+          box-sizing: border-box;
+        }
+      }
+      .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;             /* Folosește 100% din lățimea containerului părinte */
+        height: 49px;
+        border-radius: 8px;
+        background: #bedbb0;
+             
+
+        button {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border: 0px;
+          background: #bedbb0;
+         
+
+          span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #bedbb0;
+            font-family: Poppins;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            width: 28px;
+            height: 28px;
+            gap: 0px;
+            opacity: 0px;
+            background-color: #000000;
+            
+          }
+          div {
+            font-family: Poppins;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 21px;
+            letter-spacing: -0.02em;
+            text-align: left;
+            color: #161616;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.Modal {
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px);
+}

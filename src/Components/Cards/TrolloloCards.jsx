@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+
 import styles from "./TrolloloCards.module.css";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
 import { MdOutlineArrowCircleRight } from "react-icons/md";
 import { MdCircle } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa6";
+import Modal from "../CardModal/Cardmodal";
 
 function TrolloloCards() {
+  // const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+
+    // const formatDate = dateInput => {
+    //   let date;
+    //   if (dateInput instanceof Date) {
+    //     date = dateInput;
+    //   } else {
+    //     date = new Date(dateInput);
+    //   }
+    //   if (isNaN(date.getTime())) {
+    //     return 'Invalid date';
+    //   }
+    //   const day = String(date.getDate()).padStart(2, '0');
+    //   const month = String(date.getMonth() + 1).padStart(2, '0');
+    //   const year = String(date.getFullYear()).slice(-2);
+    //   return `${day}-${month}-${year}`;
+    // };
+
+
   return (
     <>
       <div className={styles.containerCard}>
@@ -49,7 +78,7 @@ function TrolloloCards() {
               <div>
                 <MdOutlineArrowCircleRight className={styles.button} />
               </div>
-              <div>
+              <div onClick={toggleModal}>
                 <MdOutlineModeEdit className={styles.button} />
               </div>
               <div>
@@ -60,6 +89,15 @@ function TrolloloCards() {
           </div>
         </div>
       </div>
+
+      
+      {showModal && (
+          <Modal
+            onClose={toggleModal}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        )}
     </>
   );
 }
