@@ -10,10 +10,6 @@ function TrolloloCards() {
   const [isDeadlineToday, setIsDeadlineToday] = useState(false); 
 
   const [cardData, setCardData] = useState({
-    title: "The Watch Spot Design",
-    description: "Create a visually stunning and eye-catching watch dial design that embodies our brands..",
-    priority: "Low", 
-    deadline: new Date('2024-10-10') 
   });
 
   const toggleModal = () => {
