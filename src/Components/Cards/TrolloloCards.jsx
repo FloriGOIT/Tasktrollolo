@@ -1,4 +1,3 @@
-// TrolloloCards.jsx
 import React, { useState, useEffect } from 'react';
 import styles from "./TrolloloCards.module.css";
 import { MdOutlineModeEdit, MdOutlineDelete, MdOutlineArrowCircleRight, MdCircle } from "react-icons/md";
@@ -14,7 +13,7 @@ function TrolloloCards() {
     title: "The Watch Spot Design",
     description: "Create a visually stunning and eye-catching watch dial design that embodies our brands..",
     priority: "Low", 
-    deadline: new Date('2033-12-25') 
+    deadline: new Date('2024-10-10') 
   });
 
   const toggleModal = () => {
@@ -40,7 +39,7 @@ function TrolloloCards() {
     setShowModal(false);
   };
 
-  // Funcția pentru a obține clasa CSS în funcție de prioritate
+
   const getPriorityClass = () => {
     switch (cardData.priority) {
       case "Low":
