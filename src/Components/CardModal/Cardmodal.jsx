@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Cardmodal.module.css";
-import ReactDatePicker from "react-datepicker";
-import CustomInput from "../Custominput/CustomInput";
-import "react-datepicker/dist/react-datepicker.css";
+import CalendarPicker from "../Custominput/PrimeCalendar";
 
 function Modal({
   onClose,
   cardData,
   setCardData,
-  selectedDate,
   setSelectedDate,
   isLoading,
 }) {
@@ -23,9 +20,11 @@ function Modal({
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Pentru deschiderea listei derulante
 
+
+
   useEffect(() => {
     setSelectedDate(editedDeadline);
-  }, [editedDeadline]);
+  }, [editedDeadline, setSelectedDate]);
 
   const handleSave = () => {
     const updatedData = {
@@ -60,9 +59,6 @@ function Modal({
 
   const selectedPriorityLabel =
     priorities.find((p) => p.value === editedPriority)?.label || "No Priority";
-
-  const today = new Date();
-  const maxDate = new Date(today.getFullYear() + 5, 11, 31);
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -128,23 +124,11 @@ function Modal({
 
             <div className={styles.deadlineContainer}>
               <div>Deadline</div>
-              <div className="date-picker-container">
-                <ReactDatePicker
-                  selected={editedDeadline}
-                  onChange={(date) => setEditedDeadline(date)}
-                  minDate={today}
-                  maxDate={maxDate}
-                  customInput={
-                    <CustomInput
-                      value={
-                        editedDeadline
-                          ? editedDeadline.toLocaleDateString("en-GB")
-                          : ""
-                      }
-                    />
-                  }
-                  dateFormat="dd-MM-yyyy"
-                  className="date-picker"
+              <div className={styles.pickerContainer}>
+               
+                <CalendarPicker
+                  value={editedDeadline}
+                  onChange={(e) => setEditedDeadline(e.value)}
                 />
               </div>
             </div>

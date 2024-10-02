@@ -1,14 +1,11 @@
+// TrolloloCards.jsx
 import React, { useState, useEffect } from 'react';
 import styles from "./TrolloloCards.module.css";
-import { MdOutlineModeEdit } from "react-icons/md";
-import { MdOutlineDelete } from "react-icons/md";
-import { MdOutlineArrowCircleRight } from "react-icons/md";
-import { MdCircle } from "react-icons/md";
+import { MdOutlineModeEdit, MdOutlineDelete, MdOutlineArrowCircleRight, MdCircle } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa6";
 import Modal from "../CardModal/Cardmodal";
 
 function TrolloloCards() {
-
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDeadlineToday, setIsDeadlineToday] = useState(false); 
@@ -20,7 +17,6 @@ function TrolloloCards() {
     deadline: new Date('2033-12-25') 
   });
 
-
   const toggleModal = () => {
     setShowModal(!showModal);
   };
@@ -28,13 +24,13 @@ function TrolloloCards() {
   const checkIfDeadlineIsToday = () => {
     const today = new Date();
     const deadline = new Date(cardData.deadline);
-
     return (
       today.getDate() === deadline.getDate() &&
       today.getMonth() === deadline.getMonth() &&
       today.getFullYear() === deadline.getFullYear()
     );
   };
+
   useEffect(() => {
     setIsDeadlineToday(checkIfDeadlineIsToday());
   }, [cardData.deadline]);
@@ -42,6 +38,22 @@ function TrolloloCards() {
   const handleSaveChanges = (updatedData) => {
     setCardData(updatedData);
     setShowModal(false);
+  };
+
+  // Funcția pentru a obține clasa CSS în funcție de prioritate
+  const getPriorityClass = () => {
+    switch (cardData.priority) {
+      case "Low":
+        return styles.priorityLow;
+      case "Medium":
+        return styles.priorityMedium;
+      case "High":
+        return styles.priorityHigh;
+      case "No Priority":
+        return styles.priorityNo;
+      default:
+        return "";
+    }
   };
 
   return (
@@ -54,7 +66,7 @@ function TrolloloCards() {
               <span className={styles.titleText}>{cardData.title}</span>
             </div>
             <div className={styles.commentCard}>
-              <span className={styles.commentText}>{cardData.description}</span>
+              <div className={styles.commentText}>{cardData.description}</div>
             </div>
           </div>
 
@@ -63,7 +75,7 @@ function TrolloloCards() {
               <div className={styles.priorityContainer}>
                 <span className={styles.priorityText}>Priority</span>
                 <div className={styles.priorityStatus}>
-                  <MdCircle className={styles.cardIcons} />
+                  <MdCircle className={`${styles.cardIcons} ${getPriorityClass()}`} /> 
                   <span>{cardData.priority}</span>
                 </div>
               </div>
@@ -71,7 +83,7 @@ function TrolloloCards() {
               <div className={styles.deadlineContainer}>
                 <span className={styles.deadlineText}>Deadline</span>
                 <div className={styles.deadlineDate}>
-                {new Date(cardData.deadline).toLocaleDateString('en-GB')}
+                  {new Date(cardData.deadline).toLocaleDateString('en-GB')}
                 </div>
               </div>
             </div>
@@ -97,7 +109,6 @@ function TrolloloCards() {
         </div>
       </div>
 
-  
       {showModal && (
         <Modal
           onClose={toggleModal}
