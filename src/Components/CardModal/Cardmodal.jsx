@@ -137,7 +137,7 @@ function Modal({
           <div className={styles.buttonContainer}>
             <button onClick={handleSave} disabled={isLoading}>
               <span>+</span>
-              <div>Edit</div>
+              <div>Save</div>
             </button>
           </div>
         </div>
