@@ -1,5 +1,3 @@
-export const getDiary = state => state.food.diaryEntries;
-export const getFilter = state => state.filter.value;
 export const getIsLoading = state => state.food.isLoading;
 export const getError = state => state.food.error;
 export const getIsLoggedIn = state => state.auth.isLoggedIn;

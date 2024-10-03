@@ -1,0 +1,36 @@
+
+.calendarStyle {
+  width: 150px;
+}
+
+
+
+.p-datepicker {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc; 
+
+}
+
+
+.p-datepicker .p-inputtext {
+  font-size: 1rem; 
+  
+}
+
+
+.p-datepicker .p-datepicker-calendar {
+  background-color: #fff; 
+  width: 100%;
+}
+
+
+.p-datepicker .p-calendar-day {
+  color: #333; 
+
+}
+
+.p-datepicker .p-calendar-day:hover {
+  background-color: #007ad9;
+  color: white; 
+ 
+}
