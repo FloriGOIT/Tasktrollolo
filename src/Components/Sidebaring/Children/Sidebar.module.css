@@ -239,14 +239,11 @@ text-align: left;
 
 
 /*LogOUT*/
-.sidebarF .logOutF {
-  display: flex;
-  flex-direction: rows;
-  align-items: center;
-  gap: 10px;
+.logOutF {
   margin: 10px 0px;
   font-size: 14px;
   font-weight: 500;
+  width: 100px;
 }
 .sidebarF .logOutF button {
   background-color: rgba(190, 219, 176, 1);
@@ -348,4 +345,4 @@ text-align: left;
 {.boardsListF{height: calc(100vh - 500px);}}
 
 @media screen and (min-height: 900px)
-{.boardsListF{height: calc(100vh - 550px);}}
+{.boardsListF{height: calc(100vh - 500px);}}

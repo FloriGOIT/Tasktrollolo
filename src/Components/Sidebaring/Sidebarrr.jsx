@@ -31,18 +31,16 @@ export const Sidebarrr = ({handleSidebarVisibility, sidebarVisibility}) => {
           <h5>My boards</h5>
           <hr />
           <CreateBoarD openModal={openModal} handleEditCreate={handleEditCreate} />
-          <BoardModaL openModal={openModal} isboardmodalopen={isboardmodalopen} isEditCreat={isEditCreat} handleIconSelect={handleIconSelect}/>
-          <HelpModaL openHelpModal={openHelpModal} isHelpModalOpen={isHelpModalOpen} />
           <hr />
           <ListOfBoardS openModal={openModal} handleEditCreate={handleEditCreate} selectedIcon={selectedIcon}/>
+          <ReachHelPing openHelpModal={openHelpModal}/>
           <LogingOut/>
+
+          <BoardModaL openModal={openModal} isboardmodalopen={isboardmodalopen} isEditCreat={isEditCreat} handleIconSelect={handleIconSelect}/>
+          <HelpModaL openHelpModal={openHelpModal} isHelpModalOpen={isHelpModalOpen} />
         </section>
       </div>
 
-      <div>
-        <ReachHelPing openHelpModal={openHelpModal}/>
-  
-      </div>
 
     </div>
   );
