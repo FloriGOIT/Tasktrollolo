@@ -1,6 +1,25 @@
 .App {
   text-align: center;
+  min-width: calc(100vw + 300px);
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 255, 255, 0.103);
+  overflow: hidden;
+  transform: translatex(0px);
+  transition-property: transform;
+  transition-duration: 400ms;
+  transition-timing-function: linear;
 }
+#sidebarIsClosed {
+  transform: translatex(-260px);
+}
+
+
+.selectedBoardF {
+  height: calc(100% - 70px); min-width: calc(100vw + 300px);
+}
+.topBarF{background-color: antiquewhite;height: 60px; min-width: calc(100vw + 300px);}
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +55,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+@media screen and (min-width: 768px) {
+  .sharedlayoutF {
+    width: calc(100vw - 260px);
+    #noSidebr {
+      transform: translateX(-260px);
+    }
+  }
+  #sidebarIsClosed {
+    transform: translatex(-290px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #sidebarIsClosed {
+    transform: translatex(0px);
+  }
+}
+

@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { Sidebar } from './Components/SideBar/Sidebar';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+  const [sidebarVisibility, setSidebarVisibility] = useState(true)
+  const handleSidebarVisibility = () => {setSidebarVisibility(!sidebarVisibility)}
+  let sidebarID = sidebarVisibility ? "sidebarIsOpen" : "sidebarIsClosed";
+  return ( 
+    <div className="App" id={sidebarID}>
+      <Sidebar handleSidebarVisibility={handleSidebarVisibility} sidebarVisibility={sidebarVisibility}/>  
+      <div className="sharedlayoutF">
+        <div className="topBarF" >sharedlayout top</div>
+        <div className="selectedBoardF" >
+          <div className="App-header">
+
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
