@@ -5,8 +5,8 @@ import Loader from "./Components/Loader/Loader";
 import { RestrictedRoute } from './Components/configRoute/restrictedRoute';
 import { PrivateRoute } from "./Components/configRoute/privateRoute";
 import "./App.css";
-import { Sidebar } from './Components/Sidebaring/SidebaR';
-import { useState } from 'react';
+
+
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
@@ -14,10 +14,7 @@ const LoginPage = lazy(() => import("./pages/LoginPage"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
 
 const App = () => {
-  const [sidebarVisibility, setSidebarVisibility] = useState(true)
-  const handleSidebarVisibility = () => {setSidebarVisibility(!sidebarVisibility)}
-  let sidebarID = sidebarVisibility ? "sidebarIsOpen" : "sidebarIsClosed";
-  
+
   return (
     <Suspense fallback={<Loader />}>
        <Routes>
@@ -29,7 +26,7 @@ const App = () => {
       </Routes>
     </Suspense>
 
-
+  )}
 
 
 
