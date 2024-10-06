@@ -4,22 +4,23 @@
   height: 100vh;
   display: flex;
   flex-direction: row;
-  background-color: rgba(0, 255, 255, 0.103);
   overflow: hidden;
   transform: translatex(0px);
   transition-property: transform;
   transition-duration: 400ms;
   transition-timing-function: linear;
+  background-color: rgba(158, 235, 174, 0.342);
 }
 #sidebarIsClosed {
   transform: translatex(-260px);
 }
 
+.topBarF{background-color: rgba(47, 248, 255, 0.322);height: 60px; min-width: calc(100vw + 300px);}
 
 .selectedBoardF {
-  height: calc(100% - 70px); min-width: calc(100vw + 300px);
+  height: calc(100% - 70px); min-width: calc(100vw + 300px); 
 }
-.topBarF{background-color: antiquewhite;height: 60px; min-width: calc(100vw + 300px);}
+
 
 .App-logo {
   height: 40vmin;
@@ -33,7 +34,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
