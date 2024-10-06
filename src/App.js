@@ -1,23 +1,26 @@
-
 import './App.css';
-import TrolloloCards from './Components/Cards/TrolloloCards';
+import { Sidebar } from './Components/SideBar/Sidebar';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <div className="App-header">
-        
+  
+  const [sidebarVisibility, setSidebarVisibility] = useState(true)
+  const handleSidebarVisibility = () => {setSidebarVisibility(!sidebarVisibility)}
+  let sidebarID = sidebarVisibility ? "sidebarIsOpen" : "sidebarIsClosed";
+  return ( 
+    <div className="App" id={sidebarID}>
+      <Sidebar handleSidebarVisibility={handleSidebarVisibility} sidebarVisibility={sidebarVisibility}/>  
+      <div className="sharedlayoutF">
+        <div className="topBarF" >sharedlayout top</div>
+        <div className="selectedBoardF" >
+          <div className="App-header">
 
-
-        <TrolloloCards />
+          </div>
+        </div>
       </div>
-
-      
-       
-
-      
     </div>
   );
 }
 
 export default App;
+
