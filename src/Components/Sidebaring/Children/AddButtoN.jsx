@@ -1,5 +1,5 @@
 
-import css from "./Sidebar.module.css"
+import css from "../../Sidebaring/Children/Sidebar.module.css"
 import { FaPlus } from "react-icons/fa";
 
 export const AddButtoN = ({openModal, handleEditCreate}) =>

@@ -1,5 +1,5 @@
 
-import css from "./Sidebar.module.css";
+import css from "../../Sidebaring/Children/Sidebar.module.css"
 import { TfiPencil } from "react-icons/tfi";
 import { IoTrashOutline } from "react-icons/io5";
 import { LuFlower } from "react-icons/lu";

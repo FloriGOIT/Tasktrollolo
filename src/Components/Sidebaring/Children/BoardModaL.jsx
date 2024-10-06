@@ -1,6 +1,6 @@
 
 import { createPortal } from "react-dom";
-import css from "./Sidebar.module.css";
+import css from "../../Sidebaring/Children/Sidebar.module.css"
 import { LuFlower } from "react-icons/lu";
 import { CiBasketball } from "react-icons/ci";
 import { BsBoundingBoxCircles } from "react-icons/bs";
@@ -12,18 +12,12 @@ import { FaPhoenixFramework } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
 
+import noImg from "../../Sidebaring/Children/SVGs/noImg.jpg"
+import pic1MobTree from "../../Sidebaring/Children/SVGs/pic1MobTree.jpg"
+import pic4MobSky from "../../Sidebaring/Children/SVGs/pic4MobSky.jpg"
+import pic5MobPlanets from "../../Sidebaring/Children/SVGs/pic5MobPlanets.jpg"
 
 
-//import pic1Desk from "./SVGs/pic1Desk.png"
-//import pic1Tablet from "./SVGs/pic1Tablet.png"
-import pic1Mob from "./SVGs/pic1Mob.png"
-//import pic4Desk from "./SVGs/pic4Desk.png";
-//import pic4Tablet from "./SVGs/pic4Tablet.png";
-import pic4Mob from "./SVGs/pic4Mob.png";
-//import pic5Desk from "./SVGs/pic5Desk.png"
-//import pic5Tablet from "./SVGs/pic5Tablet.png"
-import pic5Mob from "./SVGs/pic5Mob.png"
-import noImage from "./SVGs/noImage.png"
 
 
   export const BoardModaL = ({ openModal, isboardmodalopen, isEditCreat, handleIconSelect}) => {
@@ -52,11 +46,11 @@ import noImage from "./SVGs/noImage.png"
     FaPhoenixFramework: FaPhoenixFramework,
   };
 
-  const imageArr = [{name:"noImage", alt:"no image"},
-    {name:"pic1Mob", alt:"pink tree on a lake"},
-    {name:"pic4Mob", alt:"blue sky"},
-    {name:"pic5Mob", alt:"blue-viollet AI planets"}];
-  const imageComponents ={noImage:noImage, pic1Mob:pic1Mob, pic4Mob:pic4Mob, pic5Mob:pic5Mob}
+  const imageArr = [{name:"noImg", alt:"no image"},
+    {name:"pic1MobTree", alt:"pink tree on a lake"},
+    {name:"pic4MobSky", alt:"blue sky"},
+    {name:"pic5MobPlanets", alt:"blue-viollet AI planets"}];
+  const imageComponents ={noImg:noImg, pic1MobTree:pic1MobTree, pic4MobSky:pic4MobSky, pic5MobPlanets:pic5MobPlanets}
 
   const handleImageicon = (event) => {console.log("eventttt", event.currentTarget); }
   
