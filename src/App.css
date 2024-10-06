@@ -1,7 +1,87 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.App {
+  text-align: center;
+  min-width: calc(100vw + 300px);
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 255, 255, 0.103);
+  overflow: hidden;
+  transform: translatex(0px);
+  transition-property: transform;
+  transition-duration: 400ms;
+  transition-timing-function: linear;
+}
+#sidebarIsClosed {
+  transform: translatex(-260px);
+}
+
+
+.selectedBoardF {
+  height: calc(100% - 70px); min-width: calc(100vw + 300px);
+}
+.topBarF{background-color: antiquewhite;height: 60px; min-width: calc(100vw + 300px);}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 body {
   margin: 0px;
   padding: 0px;
   font-family: "Poppins", sans-serif; 
 }
+
+
+
+@media screen and (min-width: 768px) {
+  .sharedlayoutF {
+    width: calc(100vw - 260px);
+    #noSidebr {
+      transform: translateX(-260px);
+    }
+  }
+  #sidebarIsClosed {
+    transform: translatex(-290px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #sidebarIsClosed {
+    transform: translatex(0px);
+  }
+}
+
