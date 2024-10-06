@@ -2,7 +2,7 @@
 import css from "../../Sidebaring/Children/Sidebar.module.css"
 import { FaPlus } from "react-icons/fa";
 
-export const AddButtoN = ({openModal, handleEditCreate}) =>
+export const AddBoard = ({openModal, handleEditCreate}) =>
 { 
   const setAction = (event) => { console.log("event: ", event.currentTarget.name); 
     console.log("event svg", event.currentTarget)

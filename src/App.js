@@ -2,6 +2,7 @@ import './App.css';
 import { Sidebarrr } from "./Components/Sidebaring/Sidebarrr";
 import { useState } from 'react';
 
+
 function App() {
   
   const [sidebarVisibility, setSidebarVisibility] = useState(true)
@@ -13,7 +14,7 @@ function App() {
       <div className="sharedlayoutF">
         <div className="topBarF" >sharedlayout top</div>
         <div className="selectedBoardF" >
-          <div className="App-header">hello
+          <div className="App-header">
 
           </div>
         </div>
