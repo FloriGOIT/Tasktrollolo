@@ -11,7 +11,7 @@ import { useState } from "react";
 
 
 
-export const Sidebar = ({handleSidebarVisibility, sidebarVisibility}) => {
+export const SidebaR = ({handleSidebarVisibility, sidebarVisibility}) => {
   const [isboardmodalopen, setisboardmodalopen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const [isEditCreat, setIsEditCreate ]= useState("")
