@@ -15,13 +15,17 @@ export const Sidebarrr = ({handleSidebarVisibility, sidebarVisibility}) => {
   const [isboardmodalopen, setisboardmodalopen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const [isEditCreat, setIsEditCreate ]= useState("")
-  const [selectedIcon, setSelectedIcon] = useState();
-  const handleIconSelect = (icon) => {setSelectedIcon(icon)}; // Set the selected icon in state};
-
-  
+  const [selection, setSelection] = useState([])
+    
   const openModal = () => setisboardmodalopen(!isboardmodalopen);
   const openHelpModal = () => setIsHelpModalOpen(!isHelpModalOpen);
   const handleEditCreate = (actionType) => {setIsEditCreate(actionType); console.log(actionType)}
+  const handleNewBoard = (newBoard) => {
+    setSelection(previous => [...selection, newBoard]); console.log("selection",selection)
+     // Optionally close the modal after saving
+  };
+
+
   
   return (
     <div className={css.sidebarF} >
@@ -32,16 +36,15 @@ export const Sidebarrr = ({handleSidebarVisibility, sidebarVisibility}) => {
           <hr />
           <CreateBoarD openModal={openModal} handleEditCreate={handleEditCreate} />
           <hr />
-          <ListOfBoardS openModal={openModal} handleEditCreate={handleEditCreate} selectedIcon={selectedIcon}/>
-          <ReachHelPing openHelpModal={openHelpModal}/>
-          <LogingOut/>
-
-          <BoardModaL openModal={openModal} isboardmodalopen={isboardmodalopen} isEditCreat={isEditCreat} handleIconSelect={handleIconSelect}/>
-          <HelpModaL openHelpModal={openHelpModal} isHelpModalOpen={isHelpModalOpen} />
+          {selection !== "" ? <ListOfBoardS openModal={openModal} handleEditCreate={handleEditCreate} selection={selection}/> : null}
         </section>
       </div>
-
-
+      <div>
+          <ReachHelPing openHelpModal={openHelpModal}/>
+          <LogingOut/>
+          <BoardModaL openModal={openModal} isboardmodalopen={isboardmodalopen} isEditCreat={isEditCreat} handleNewBoard={handleNewBoard} />
+          <HelpModaL openHelpModal={openHelpModal} isHelpModalOpen={isHelpModalOpen} />
+      </div>
     </div>
   );
 };

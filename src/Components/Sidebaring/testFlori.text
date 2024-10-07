@@ -1,0 +1,30 @@
+     import aiPlanetsDesk from "./SVGs/aiPlanets-desk.jpg"
+import aiPlanetsTablet from "./SVGs/aiPlanets-tablet.jpg"
+import aiPlanetsMob from "./SVGs/aiPlanets-mob.jpg"
+
+import pinkTreeDesk from "./SVGs/pinkTree-desk.jpg"
+import pinkTreeTablet from "./SVGs/pinkTree-tablet.jpg"
+import pinkTreeMob from "./SVGs/pinkTree-mob.jpg"
+
+import skyCloudDesk from "./SVGs/skyCloud-desk.jpg"
+import skyCloudTablet from "./SVGs/skyCloud-tablet.jpg"
+import skyCloudMob from "./SVGs/skyCloud-mob.jpg"
+     
+     <div className={css.boardImageF}>
+        <CiImageOn id="img1"/>
+        <picture id="img2">
+          <source media="(max-width: 768px)" srcSet={pinkTreeMob} />
+          <source media="(max-width: 1200px)" srcSet={pinkTreeTablet} />
+          <img src={pinkTreeDesk} alt="pink tree on a lake" />
+        </picture>
+        <picture id="img3">
+          <source media="(max-width: 768px)" srcSet={skyCloudMob} />
+          <source media="(max-width: 1200px)" srcSet={skyCloudTablet} />
+          <img src={skyCloudDesk} alt="one big cloud on blue sky" />
+        </picture>
+        <picture id="img4">
+          <source media="(max-width: 768px)" srcSet={aiPlanetsMob} />
+          <source media="(max-width: 1200px)" srcSet={aiPlanetsTablet} />
+          <img src={aiPlanetsDesk} alt="blue-viollet planets" />
+        </picture>
+      </div>

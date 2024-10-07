@@ -11,7 +11,7 @@ export const HelpModaL = ({ openHelpModal, isHelpModalOpen }) => {
 
   return createPortal(
 <section className={css.helpModalF}>
-      <button className={css.closingButtonF} onClick={openHelpModal} isModaisHelpModalOpenlOpen={isHelpModalOpen}>
+      <button className={css.closingButtonF} onClick={openHelpModal} isHelpModalOpen={isHelpModalOpen}>
         < IoMdClose />
       </button>
       <form >

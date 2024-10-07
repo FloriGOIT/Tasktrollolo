@@ -11,75 +11,55 @@ import { MdWorkspaces } from "react-icons/md";
 import { FaPhoenixFramework } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
+import { CiImageOff } from "react-icons/ci";
+import {  useState } from "react";
 
-import noImg from "../../Sidebaring/Children/SVGs/noImg.jpg"
-import pic1MobTree from "../../Sidebaring/Children/SVGs/pic1MobTree.jpg"
-import pic4MobSky from "../../Sidebaring/Children/SVGs/pic4MobSky.jpg"
-import pic5MobPlanets from "../../Sidebaring/Children/SVGs/pic5MobPlanets.jpg"
+import aiPlanetsDesk from "./SVGs/aiPlanets-desk.jpg"
+import pinkTreeDesk from "./SVGs/pinkTree-desk.jpg"
+import skyCloudDesk from "./SVGs/skyCloud-desk.jpg"
 
 
-
-
-  export const BoardModaL = ({ openModal, isboardmodalopen, isEditCreat, handleIconSelect}) => {
+  export const BoardModaL = ({ openModal, isboardmodalopen, isEditCreat, handleNewBoard}) => {
+  const [selection, setSelection] = useState([{title:"", icon: "", image:""}])
   if (!isboardmodalopen) return null; // Don't render anything if not open
 
-  const iconsArr = [
-
-    "LuFlower", 
-    "CiBasketball", 
-    "BsBoundingBoxCircles", 
-    "FaArrowsToDot", 
-    "FaBluesky", 
-    "AiOutlineAntDesign", 
-    "MdWorkspaces", 
-    "FaPhoenixFramework"
-  ];
-  const iconComponents = {
-
-    LuFlower: LuFlower,
-    CiBasketball: CiBasketball,
-    BsBoundingBoxCircles: BsBoundingBoxCircles,
-    FaArrowsToDot: FaArrowsToDot,
-    FaBluesky: FaBluesky,
-    AiOutlineAntDesign: AiOutlineAntDesign,
-    MdWorkspaces: MdWorkspaces,
-    FaPhoenixFramework: FaPhoenixFramework,
-  };
-
-  const imageArr = [{name:"noImg", alt:"no image"},
-    {name:"pic1MobTree", alt:"pink tree on a lake"},
-    {name:"pic4MobSky", alt:"blue sky"},
-    {name:"pic5MobPlanets", alt:"blue-viollet AI planets"}];
-  const imageComponents ={noImg:noImg, pic1MobTree:pic1MobTree, pic4MobSky:pic4MobSky, pic5MobPlanets:pic5MobPlanets}
-
-  const handleImageicon = (event) => {console.log("eventttt", event.currentTarget); }
+  const handleSelectIcon = (event) => {const icon = event.target.closest('svg').id; setSelection( (previous) => ({...previous, icon}) ); console.log("icon", icon)}
+  const handleSelectImg = (event) => {const image = event.target.id; setSelection( previous => ({...previous, image }) ); console.log("image", image)}
+  const handleBoardTitle =  (event) => { const title =  event.target.value; setSelection( previous => ({...previous, title}) )}
+  const handleSaveBtn = () => {console.log(selection); handleNewBoard(selection); openModal()}
   
   return createPortal(
     <div className={css.boardDetailsModalF}>
-      <button className={css.closingButtonF} onClick={openModal} >
-        < IoMdClose />
+      <button className={css.closingButtonF} onClick={openModal}>
+        <IoMdClose />
       </button>
       <p>{isEditCreat}</p>
-      <input type="text" name="boardTitleF" placeholder="Enter board title" />
+      <input type="text" name="boardTitleF" placeholder="Enter board title" onChange={handleBoardTitle} value={selection.title} />
       <p>Icons</p>
 
-      <ul className={css.boardIconsF}>
-        {iconsArr.map((iconName, index) => {
-            const IconComponent = iconComponents[iconName]
-          return(<li key={index}><button name={iconName} ><IconComponent onClick={handleImageicon}/></button></li>)})}
-      </ul>
+      <div className={css.boardIconsF} onClick={handleSelectIcon}>
+        <LuFlower id="icon1" />
+        <CiBasketball id="icon2" />
+        <BsBoundingBoxCircles id="icon3" />
+        <FaArrowsToDot id="icon4" />
+        <FaBluesky id="icon5" />
+        <AiOutlineAntDesign id="icon6" />
+        <MdWorkspaces id="icon7" />
+        <FaPhoenixFramework id="icon8" />
+      </div>
 
       <p>Background</p>
 
-      <ul className={css.boardImageF}>
+      <div className={css.boardImageF} onSubmit={handleSelectImg}>
+        <CiImageOff id="img1"/>
+        <img src={pinkTreeDesk} alt="pink tree on a lake" id="img2"/>
+        <img src={skyCloudDesk} alt="one big cloud on blue sky" id="img3"/>
+        <img src={aiPlanetsDesk} alt="blue-viollet planets" id="img4" />
+      </div>
 
-        {imageArr.map((image, index)=>{
-          const Image = imageComponents[image.name]
-          return(<li key={index}><button name={image.name} ><img src={Image} alt={image.alt} /></button></li>)})}
-      </ul>
-      <span className={css.saveButtonF}> 
-        <FaPlus/>
-        <p>Save</p>
+      <span className={css.saveButtonF} onClick={handleSaveBtn}>
+        <FaPlus />
+        <p >Save</p>
       </span>
     </div>,
     document.body // Render the modal to the body
