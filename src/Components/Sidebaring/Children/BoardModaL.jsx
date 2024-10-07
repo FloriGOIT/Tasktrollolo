@@ -32,6 +32,7 @@ import skyCloudDesk from "./SVGs/skyCloud-desk.jpg"
     <div className={css.boardDetailsModalF}>
       <button className={css.closingButtonF} onClick={openModal}>
         <IoMdClose />
+        
       </button>
       <p>{isEditCreat}</p>
       <input type="text" name="boardTitleF" placeholder="Enter board title" onChange={handleBoardTitle} value={selection.title} />
