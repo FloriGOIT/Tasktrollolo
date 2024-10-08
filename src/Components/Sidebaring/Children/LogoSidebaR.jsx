@@ -1,5 +1,5 @@
 import { AiFillThunderbolt } from "react-icons/ai";
-import css from "./Sidebar.module.css";
+import css from "../../Sidebaring/Children/Sidebar.module.css";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 

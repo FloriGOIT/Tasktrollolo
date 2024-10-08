@@ -1,8 +1,8 @@
 
 
 
-import css from "./Sidebar.module.css"
-import { AddButtoN } from "./AddButtoN.jsx"
+import css from "../../Sidebaring/Children/Sidebar.module.css"
+import { AddButtoN} from "../Children/AddButtoN"
 
 export const CreateBoarD = ({openModal, handleEditCreate}) =>
 {
