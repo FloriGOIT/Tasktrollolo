@@ -256,6 +256,9 @@ text-align: left;
   padding-right: 2px;
   height: 30px;
 }
+.logOutF p:hover {
+  transform: scale(1.0);
+}
 .sidebarF .logOutF button:hover,
 .sidebarF .logOutF button:focus {
   background-color: rgb(128, 180, 102);

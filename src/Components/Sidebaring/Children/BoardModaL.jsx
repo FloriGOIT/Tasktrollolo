@@ -16,14 +16,14 @@ import { FaPlus } from "react-icons/fa";
 
 //import pic1Desk from "./SVGs/pic1Desk.png"
 //import pic1Tablet from "./SVGs/pic1Tablet.png"
-import pic1Mob from "./SVGs/pic1Mob.png"
+import pic1Mob from "./SVGs/pic1Mob.jpg"
 //import pic4Desk from "./SVGs/pic4Desk.png";
 //import pic4Tablet from "./SVGs/pic4Tablet.png";
-import pic4Mob from "./SVGs/pic4Mob.png";
+import pic4Mob from "./SVGs/pic4Mob.jpg";
 //import pic5Desk from "./SVGs/pic5Desk.png"
 //import pic5Tablet from "./SVGs/pic5Tablet.png"
-import pic5Mob from "./SVGs/pic5Mob.png"
-import noImage from "./SVGs/noImage.png"
+import pic5Mob from "./SVGs/pic5Mob.jpg"
+import noImage from "./SVGs/noImage.jpg"
 
 
   export const BoardModaL = ({ openModal, isboardmodalopen, isEditCreat, handleIconSelect}) => {

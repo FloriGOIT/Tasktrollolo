@@ -2,7 +2,7 @@
 import css from "../Sidebaring/Children/Sidebar.module.css";
 import { ListOfBoardS } from "../Sidebaring/Children/ListOfBoardS";
 import { ReachHelPing } from "../Sidebaring/Children/ReachHelPing";
-import { LogOuT } from "../Sidebaring/Children/LogOuT";
+import { LogOut } from "../Sidebaring/Children/LogOuT";
 import { LogoSidebaR } from "../Sidebaring/Children/LogoSidebaR";
 import { CreateBoarD } from "../Sidebaring/Children/CreateBoarD";
 import {BoardModaL} from "../Sidebaring/Children/BoardModaL";
@@ -41,7 +41,7 @@ export const Sidebar = ({handleSidebarVisibility, sidebarVisibility}) => {
 
       <div>
         <ReachHelPing openHelpModal={openHelpModal}/>
-        <LogOuT />
+        <LogOut />
       </div>
 
     </div>
