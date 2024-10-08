@@ -16,15 +16,14 @@ export const Sidebarrr = ({handleSidebarVisibility, sidebarVisibility}) => {
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const [isEditCreat, setIsEditCreate ]= useState("")
   const [selection, setSelection] = useState([])
-    
-  const openModal = () => setisboardmodalopen(!isboardmodalopen);
-  const openHelpModal = () => setIsHelpModalOpen(!isHelpModalOpen);
-  const handleEditCreate = (actionType) => {setIsEditCreate(actionType); console.log(actionType)}
-  const handleNewBoard = (newBoard) => {
-    setSelection(previous => [...selection, newBoard]); console.log("selection",selection)
-     // Optionally close the modal after saving
-  };
+  const [selectedBoard, setSelectedBoard] = useState("");
+  const [helpFormData, setHelpFormData] = useState([]);
 
+  const openModal = () => setisboardmodalopen(!isboardmodalopen);
+  const openHelpModal = () => {setIsHelpModalOpen(!isHelpModalOpen); };
+  const handleEditCreate = (actionType) => {setIsEditCreate(actionType); console.log(actionType)}
+  const handleNewBoard = (newBoard) => {setSelection(previous => [...selection, newBoard]); console.log("selection",selection)};
+  const handleSelectedBoard = (boardName) => {setSelectedBoard(boardName); console.log("boardName: ", boardName)}
 
   
   return (
@@ -36,14 +35,15 @@ export const Sidebarrr = ({handleSidebarVisibility, sidebarVisibility}) => {
           <hr />
           <CreateBoarD openModal={openModal} handleEditCreate={handleEditCreate} />
           <hr />
-          {selection !== "" ? <ListOfBoardS openModal={openModal} handleEditCreate={handleEditCreate} selection={selection}/> : null}
+          {selection !== "" ? <ListOfBoardS openModal={openModal} handleEditCreate={handleEditCreate} selection={selection} handleSelectedBoard={handleSelectedBoard}/> : null}
         </section>
       </div>
       <div>
           <ReachHelPing openHelpModal={openHelpModal}/>
           <LogingOut/>
-          <BoardModaL openModal={openModal} isboardmodalopen={isboardmodalopen} isEditCreat={isEditCreat} handleNewBoard={handleNewBoard} />
-          <HelpModaL openHelpModal={openHelpModal} isHelpModalOpen={isHelpModalOpen} />
+          <BoardModaL openModal={openModal} isboardmodalopen={isboardmodalopen} isEditCreat={isEditCreat} handleNewBoard={handleNewBoard} selection={selection} selectedBoard={selectedBoard} setSelection={setSelection}/>
+  const [helpAllData, setHelpAllData]=useState([])
+          {isHelpModalOpen ? <HelpModaL openHelpModal={openHelpModal} setHelpFormData={setHelpFormData} helpFormData={helpFormData}/> : null}
       </div>
     </div>
   );

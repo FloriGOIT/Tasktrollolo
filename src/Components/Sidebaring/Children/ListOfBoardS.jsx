@@ -10,13 +10,15 @@ import { FaBluesky } from "react-icons/fa6";
 import { AiOutlineAntDesign } from "react-icons/ai";
 import { MdWorkspaces } from "react-icons/md";
 import { FaPhoenixFramework } from "react-icons/fa6";
-import { useState } from "react";
 
 
-export const ListOfBoardS = ({openModal, handleEditCreate, selection}) => {
-  const setAction = (event) => { handleEditCreate(event.currentTarget.name); openModal();}
-  const [selectedButton, setSelectedButton] = useState(100);
-  
+export const ListOfBoardS = ({openModal, handleEditCreate, selection, handleSelectedBoard}) => {
+  const setAction = (event) => { handleEditCreate(event.currentTarget.name); openModal();
+    handleSelectedBoard(event.target.closest('li').id)
+  }
+
+
+
   const iconSeen = (icon) => {
     switch (icon) {
       case 'icon1':
@@ -39,14 +41,17 @@ export const ListOfBoardS = ({openModal, handleEditCreate, selection}) => {
         return null;
     }
   };
+
   
-  const handleBTN = (event) =>{const x = event.target.closest('li').id; setSelectedButton(x); console.log(x)}
+  const handleBTN = (event) =>{handleSelectedBoard(event.target.closest('li').id); }
 
   return (
     <ul className={css.boardsListF} >
 
-      {selection.map( (el, index) => { return (
-        <li key={index} className={selectedButton === index ? "css.black" : ""} id={index} onClick={handleBTN}>
+      {selection.map( (el, index) => {
+
+         return (
+        <li key={index} id={el.title} onClick={handleBTN}>
         <span className={css.namingBoardF}>
           <p> {iconSeen(el.icon)} </p>
           <p> {el.title} </p>

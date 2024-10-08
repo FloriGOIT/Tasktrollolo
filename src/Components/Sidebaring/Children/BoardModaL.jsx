@@ -19,23 +19,75 @@ import pinkTreeDesk from "./SVGs/pinkTree-desk.jpg"
 import skyCloudDesk from "./SVGs/skyCloud-desk.jpg"
 
 
-  export const BoardModaL = ({ openModal, isboardmodalopen, isEditCreat, handleNewBoard}) => {
-  const [selection, setSelection] = useState([{title:"", icon: "", image:""}])
+export const BoardModaL = ({ openModal, isboardmodalopen, isEditCreat, handleNewBoard, selection, setSelection, selectedBoard }) => {
+  const [newSelection, setNewSelection] = useState({ title: "", icon: "", image: "" });
+
   if (!isboardmodalopen) return null; // Don't render anything if not open
 
-  const handleSelectIcon = (event) => {const icon = event.target.closest('svg').id; setSelection( (previous) => ({...previous, icon}) ); console.log("icon", icon)}
-  const handleSelectImg = (event) => {const image = event.target.id; setSelection( previous => ({...previous, image }) ); console.log("image", image)}
-  const handleBoardTitle =  (event) => { const title =  event.target.value; setSelection( previous => ({...previous, title}) )}
-  const handleSaveBtn = () => {console.log(selection); handleNewBoard(selection); openModal()}
-  
-  return createPortal(
-    <div className={css.boardDetailsModalF}>
-      <button className={css.closingButtonF} onClick={openModal}>
-        <IoMdClose />
+  const handleBoardTitle = (event) => {
+    const title = event.target.value;
+    setNewSelection((previous) => ({ ...previous, title }));
+  };
+
+  const handleSelectIcon = (event) => {
+    const icon = event.target.closest('svg').id;
+    setNewSelection((previous) => ({ ...previous, icon }));
+    console.log("icon", icon);
+  };
+
+  const handleSelectImg = (event) => {
+    const image = event.target.id;
+    setNewSelection((previous) => ({ ...previous, image }));
+    console.log("image", image);
+  };
+
+
+  const handleSaveBtn = (event) => {
+    event.preventDefault();
+    if(isEditCreat === "Create board")
+      { if(newSelection.icon === ""){alert("Please select an icon"); return}
+        else if(newSelection.image === ""){alert("Please select an image"); return}
+        console.log(newSelection);
+        if(selection.some(board => board.title === newSelection.title)) {alert("The title is already in use");}
+        else{handleNewBoard(newSelection); setNewSelection({ title: "", icon: "", image: "" }); openModal();}      
+    }
+    else if(isEditCreat === "Edit board")
+      { if(newSelection.icon === ""){alert("Please select an icon"); return}
+    else if(newSelection.image === ""){alert("Please select an image"); return}
+        // Update the existing board
+        const index = selection.findIndex(board => board.title === selectedBoard);
         
+        if (index !== -1) {
+          const updatedSelection = [...selection]; // Create a copy of the selection
+          updatedSelection[index] = { ...updatedSelection[index], ...newSelection }; // Update the specific board
+          
+          // Assuming you have a function to update the selection in the parent component
+          setSelection(updatedSelection);
+          
+          openModal();
+          setNewSelection({ title: "", icon: "", image: "" }) // Close modal after editing
+        } else {
+          console.log("Board not found for editing");
+        }
+      }
+  };
+
+  return createPortal(
+    <form className={css.boardDetailsModalF} onSubmit={handleSaveBtn}>
+      <button type="button" className={css.closingButtonF} onClick={openModal}>
+        <IoMdClose />
       </button>
       <p>{isEditCreat}</p>
-      <input type="text" name="boardTitleF" placeholder="Enter board title" onChange={handleBoardTitle} value={selection.title} />
+      <label htmlFor="boardTitleF">Board Title:</label>
+      <input
+        type="text"
+        id="boardTitleF"
+        name="boardTitleF"
+        placeholder="Enter board title"
+        onChange={handleBoardTitle}
+        value={newSelection.title}
+        required // Ensures the field is filled before submission
+      />
       <p>Icons</p>
 
       <div className={css.boardIconsF} onClick={handleSelectIcon}>
@@ -51,18 +103,18 @@ import skyCloudDesk from "./SVGs/skyCloud-desk.jpg"
 
       <p>Background</p>
 
-      <div className={css.boardImageF} onSubmit={handleSelectImg}>
-        <CiImageOff id="img1"/>
-        <img src={pinkTreeDesk} alt="pink tree on a lake" id="img2"/>
-        <img src={skyCloudDesk} alt="one big cloud on blue sky" id="img3"/>
+      <div className={css.boardImageF} onClick={handleSelectImg}>
+        <CiImageOff id="img1" />
+        <img src={pinkTreeDesk} alt="pink tree on a lake" id="img2" />
+        <img src={skyCloudDesk} alt="one big cloud on blue sky" id="img3" />
         <img src={aiPlanetsDesk} alt="blue-viollet planets" id="img4" />
       </div>
 
-      <span className={css.saveButtonF} onClick={handleSaveBtn}>
+      <button type="submit" className={css.saveButtonF}>
         <FaPlus />
-        <p >Save</p>
-      </span>
-    </div>,
+        <p>Save</p>
+      </button>
+    </form>,
     document.body // Render the modal to the body
   );
 };
