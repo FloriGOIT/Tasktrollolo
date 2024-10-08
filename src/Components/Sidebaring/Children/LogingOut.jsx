@@ -5,7 +5,7 @@ import { TbLogout } from "react-icons/tb";
 import { logout } from "../../../Redux/auth/authOperations"; 
 import css from "./Sidebar.module.css";
 
-export const LogOut = () => {
+export const LogingOut = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
