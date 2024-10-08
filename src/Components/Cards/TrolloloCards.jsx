@@ -11,6 +11,7 @@ function TrolloloCards() {
 
   const [cardData, setCardData] = useState({
   });
+  const [colorStatus, setColorStatus] = useState({});
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -32,6 +33,7 @@ function TrolloloCards() {
 
   const handleSaveChanges = (updatedData) => {
     setCardData(updatedData);
+    setColorStatus({ priorityc: updatedData.priority }); 
     setShowModal(false);
   };
 
@@ -51,10 +53,26 @@ function TrolloloCards() {
     }
   };
 
+  const getPriorityColor = () => {
+    switch (colorStatus.priorityc) {
+      case "Low":
+        return styles.prioritycLow;
+      case "Medium":
+        return styles.prioritycMedium;
+      case "High":
+        return styles.prioritycHigh;
+      case "No Priority":
+        return styles.prioritycNo;
+      default:
+        return "";
+    }
+  };
+
+
   return (
     <>
       <div className={styles.containerCard}>
-        <div className={styles.colorStatus}></div>
+      <div className={`${styles.colorStatus} ${getPriorityColor()}`}></div>
         <div className={styles.cardWrapper}>
           <div className={styles.containerContent}>
             <div className={styles.titleCard}>
