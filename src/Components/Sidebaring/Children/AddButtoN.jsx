@@ -14,7 +14,7 @@ export const AddButtoN = ({openModal, handleEditCreate}) =>
  return(
  <>
         <button className={css.addBoardBtnF}  onClick={setAction} name="Create board"  >
-          <FaPlus />
+          <FaPlus className={css.icontPlus} />
         </button>
  </>
  )}
