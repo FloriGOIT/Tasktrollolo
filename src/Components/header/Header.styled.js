@@ -4,14 +4,13 @@ export const HeaderWrapper = styled.header`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: calc(100% - 350px);
+    width: calc(100% - 260px);
     height: 68px;
-    padding: 0 24px;
     background: #1e1e1e;
     color: #ffffff;
     position: fixed; 
     top: 0; 
-    left: 302px;
+    left: 260px;
     z-index: 1000; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     transition: background 0.3s ease; 
