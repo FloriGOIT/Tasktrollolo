@@ -309,7 +309,8 @@ text-align: left;
 
 .saveButtonF svg{height: 15px; width: 15px; color: rgba(190, 219, 176, 1);background-color: black; padding: 5px;   border-radius: 10%;
   border: none;
-  align-items: center; }
+  align-items: center;
+ }
 
 
 /*Media*/
