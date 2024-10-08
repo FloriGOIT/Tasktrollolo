@@ -4,13 +4,26 @@
   gap: 0;
 
   .colorStatus {
-    background: #8fa1d0;
     width: 4px;
-
-    gap: 0px;
-    border-radius: 4px 0px 0px 4px;
-    opacity: 0px;
+    border-radius: 4px 0 0 4px;
   }
+  
+  .prioritycLow {
+    background-color: #8fa1d0;
+  }
+  
+  .prioritycMedium {
+    background-color: #e09cb5;
+  }
+  
+  .prioritycHigh {
+    background-color: #bedbb0;
+  }
+  
+  .prioritycNo {
+    background-color: #ccc;
+  }
+
   .cardWrapper {
     display: flex;
     flex-direction: column;
