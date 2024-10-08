@@ -39,7 +39,7 @@ const Header = ({ user, loading, error, toggleTheme }) => {
                             <Title style={{ display: 'flex', alignItems: 'center' }}>
                                 {currentUser.name}
                                 <div style={{
-                                    width: '0',
+                                    width: '100%',
                                     height: '0',
                                     borderLeft: '5px solid transparent',
                                     borderRight: '5px solid transparent',
