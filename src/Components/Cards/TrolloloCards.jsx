@@ -72,7 +72,9 @@ function TrolloloCards() {
   return (
     <>
       <div className={styles.containerCard}>
+
         <div className={`${styles.colorStatus} ${getPriorityColor()}`}></div>
+
         <div className={styles.cardWrapper}>
           <div className={styles.containerContent}>
             <div className={styles.titleCard}>
