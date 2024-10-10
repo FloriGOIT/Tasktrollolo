@@ -14,7 +14,7 @@
   line-height: 27px;
   letter-spacing: -0.02em;
   text-align: left;
-  padding: 10px 0px ;
+  padding: 10px 0px 10px 34px ;
   /* color: #161616; for black theme*/
   color: #f9f9f9;
   margin: 0;
@@ -116,11 +116,12 @@ span {
     display: flex;
     flex-direction: row;
     gap: 34px;
+    
 
     .columnContent {
       display: flex;
       flex-direction: row;
-      gap: 34px;
+      
     }
   
   }
