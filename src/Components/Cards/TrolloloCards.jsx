@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import styles from "./TrolloloCards.module.css";
-import { MdOutlineModeEdit, MdOutlineDelete, MdOutlineArrowCircleRight, MdCircle } from "react-icons/md";
+import {
+  MdOutlineModeEdit,
+  MdOutlineDelete,
+  MdOutlineArrowCircleRight,
+  MdCircle,
+} from "react-icons/md";
 import { FaRegBell } from "react-icons/fa6";
 import Modal from "../CardModal/Cardmodal";
 
-function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
+function TrolloloCards({ cardData, onEdit, onDelete }) {
+  // Modifică aici
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [isDeadlineToday, setIsDeadlineToday] = useState(false); 
+  const [isDeadlineToday, setIsDeadlineToday] = useState(false);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -28,7 +34,7 @@ function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
   }, [cardData.deadline]);
 
   const handleSaveChanges = (updatedData) => {
-    onEdit(updatedData); // Apelează funcția pentru a actualiza cardul
+    onEdit(updatedData); 
     setShowModal(false);
   };
 
@@ -50,7 +56,7 @@ function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
   return (
     <>
       <div className={styles.containerCard}>
-        <div className={`${styles.colorStatus} ${getPriorityClass()}`}></div>
+      <div className={`${styles.colorStatus} ${getPriorityClass()}`}></div>
 
         <div className={styles.cardWrapper}>
           <div className={styles.containerContent}>
@@ -67,7 +73,9 @@ function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
               <div className={styles.priorityContainer}>
                 <span className={styles.priorityText}>Priority</span>
                 <div className={styles.priorityStatus}>
-                  <MdCircle className={`${styles.cardIcons} ${getPriorityClass()}`} /> 
+                  <MdCircle
+                    className={`${styles.cardIcons} ${getPriorityClass()}`}
+                  />
                   <span>{cardData.priority}</span>
                 </div>
               </div>
@@ -75,14 +83,18 @@ function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
               <div className={styles.deadlineContainer}>
                 <span className={styles.deadlineText}>Deadline</span>
                 <div className={styles.deadlineDate}>
-                  {new Date(cardData.deadline).toLocaleDateString('en-GB')}
+                  {new Date(cardData.deadline).toLocaleDateString("en-GB")}
                 </div>
               </div>
             </div>
 
             <div className={styles.buttonsContainer}>
               <div className={styles.buttonBell}>
-                <FaRegBell className={`${styles.button} ${isDeadlineToday ? styles.greenBell : ""}`} />
+                {isDeadlineToday ? (
+                  <FaRegBell
+                    className={`${styles.button} ${styles.greenBell}`}
+                  />
+                ) : null}
               </div>
 
               <div className={styles.buttonWrapper}>
@@ -93,7 +105,10 @@ function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
                   <MdOutlineModeEdit className={styles.button} />
                 </div>
                 <div>
-                  <MdOutlineDelete className={styles.button} onClick={() => onDelete(cardData)} />
+                  <MdOutlineDelete
+                    className={styles.button}
+                    onClick={() => onDelete(cardData)}
+                  />
                 </div>
               </div>
             </div>
@@ -104,8 +119,8 @@ function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
       {showModal && (
         <Modal
           onClose={toggleModal}
-          cardData={cardData} 
-          setCardData={handleSaveChanges} 
+          cardData={cardData}
+          setCardData={handleSaveChanges}
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         />

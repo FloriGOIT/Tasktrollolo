@@ -46,7 +46,7 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.cardContainer}>
           <div className={styles.cardName}>
-            <h3>{cardData.title ? "Edit card" : "Add card"}</h3> {/* Aici schimbăm titlul */}
+            <h3>{cardData.title ? "Edit card" : "Add card"}</h3>
           </div>
 
           <div className={styles.inputContainer}>
