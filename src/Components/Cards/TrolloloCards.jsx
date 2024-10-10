@@ -10,10 +10,14 @@ import { FaRegBell } from "react-icons/fa6";
 import Modal from "../CardModal/Cardmodal";
 
 function TrolloloCards({ cardData, onEdit, onDelete }) {
-  // Modifică aici
+
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDeadlineToday, setIsDeadlineToday] = useState(false);
+
+
+  const [colorStatus, setColorStatus] = useState({});
+
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -35,10 +39,12 @@ function TrolloloCards({ cardData, onEdit, onDelete }) {
 
   const handleSaveChanges = (updatedData) => {
     onEdit(updatedData); 
+    setColorStatus({ priorityc: updatedData.priority }); 
     setShowModal(false);
   };
 
   const getPriorityClass = () => {
+    if (!cardData.priority) return "";
     switch (cardData.priority) {
       case "Low":
         return styles.priorityLow;
@@ -53,10 +59,25 @@ function TrolloloCards({ cardData, onEdit, onDelete }) {
     }
   };
 
+  const getPriorityColor = () => {
+    switch (colorStatus.priorityc) {
+      case "Low":
+        return styles.prioritycLow;
+      case "Medium":
+        return styles.prioritycMedium;
+      case "High":
+        return styles.prioritycHigh;
+      case "No Priority":
+        return styles.prioritycNo;
+      default:
+        return "";
+    }
+  };
+
   return (
     <>
       <div className={styles.containerCard}>
-      <div className={`${styles.colorStatus} ${getPriorityClass()}`}></div>
+      <div className={`${styles.colorStatus} ${getPriorityColor()}`}></div>
 
         <div className={styles.cardWrapper}>
           <div className={styles.containerContent}>

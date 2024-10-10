@@ -33,25 +33,29 @@ const Boards = ({ boardName }) => {
     open();
   };
 
-
   const handleSaveCard = (cardData) => {
     const updatedColumns = [...columns];
     
     if (modalMode === "add") {
- 
-      updatedColumns[activeColumnIndex].cards.push(cardData);
+    
+      updatedColumns[activeColumnIndex].cards.push({
+        ...cardData, 
+        priorityc: cardData.priority, 
+      });
     } else if (modalMode === "edit") {
-   
+    
       const cardIndex = updatedColumns[activeColumnIndex].cards.findIndex(
         (card) => card.title === selectedCard.title
       );
-      updatedColumns[activeColumnIndex].cards[cardIndex] = cardData;
+      updatedColumns[activeColumnIndex].cards[cardIndex] = {
+        ...cardData,
+        priorityc: cardData.priority, 
+      };
     }
   
     setColumns(updatedColumns);
     close(); 
   };
-  
 
   return (
     <div className={styles.boardContainer}>
