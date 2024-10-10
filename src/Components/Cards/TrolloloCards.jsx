@@ -4,14 +4,10 @@ import { MdOutlineModeEdit, MdOutlineDelete, MdOutlineArrowCircleRight, MdCircle
 import { FaRegBell } from "react-icons/fa6";
 import Modal from "../CardModal/Cardmodal";
 
-function TrolloloCards() {
+function TrolloloCards({ cardData, onEdit, onDelete }) { // Modifică aici
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDeadlineToday, setIsDeadlineToday] = useState(false); 
-
-  const [cardData, setCardData] = useState({
-  });
-  const [colorStatus, setColorStatus] = useState({});
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -32,11 +28,9 @@ function TrolloloCards() {
   }, [cardData.deadline]);
 
   const handleSaveChanges = (updatedData) => {
-    setCardData(updatedData);
-    setColorStatus({ priorityc: updatedData.priority }); 
+    onEdit(updatedData); // Apelează funcția pentru a actualiza cardul
     setShowModal(false);
   };
-
 
   const getPriorityClass = () => {
     switch (cardData.priority) {
@@ -53,27 +47,10 @@ function TrolloloCards() {
     }
   };
 
-  const getPriorityColor = () => {
-    switch (colorStatus.priorityc) {
-      case "Low":
-        return styles.prioritycLow;
-      case "Medium":
-        return styles.prioritycMedium;
-      case "High":
-        return styles.prioritycHigh;
-      case "No Priority":
-        return styles.prioritycNo;
-      default:
-        return "";
-    }
-  };
-
-
   return (
     <>
       <div className={styles.containerCard}>
-
-        <div className={`${styles.colorStatus} ${getPriorityColor()}`}></div>
+        <div className={`${styles.colorStatus} ${getPriorityClass()}`}></div>
 
         <div className={styles.cardWrapper}>
           <div className={styles.containerContent}>
@@ -116,7 +93,7 @@ function TrolloloCards() {
                   <MdOutlineModeEdit className={styles.button} />
                 </div>
                 <div>
-                  <MdOutlineDelete className={styles.button} />
+                  <MdOutlineDelete className={styles.button} onClick={() => onDelete(cardData)} />
                 </div>
               </div>
             </div>
