@@ -1,0 +1,170 @@
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #000000;
+  width: 334px;
+  padding: 0 24px;
+}
+
+.boardName {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  padding: 10px 0px ;
+  /* color: #161616; for black theme*/
+  color: #f9f9f9;
+  margin: 0;
+}
+
+.columnContainer {
+display: flex;
+flex-direction: column;
+gap: 34px;
+}
+
+.addBtnContainer {
+  height: 56px;
+  width: 334px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 8px;
+  
+
+  .addColumnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-sizing: content-box;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: #161616;
+    padding: 14px 79px;
+  }
+
+  .addColumnText {
+    color: #161616;
+    width: 141px;
+
+    input {
+      border: 0px;
+      padding: 2px 6px;
+      outline: none;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    :focus {
+      border: none; 
+      box-shadow: none; 
+    }
+    ::placeholder {
+      color: #999; 
+      font-style: italic; 
+      padding-left: 3px;
+      opacity: 0.7; 
+    }
+
+    
+  
+  }
+}
+
+.columnInput {
+  padding: 5px;
+}
+
+.addColumnButton {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 20px;
+
+span {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+ 
+}
+}
+
+.columnContainer {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+
+
+  .columnWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 34px;
+
+    .columnContent {
+      display: flex;
+      flex-direction: row;
+      gap: 34px;
+    }
+  
+  }
+
+}
+
+.column {
+  
+  .columnTitle {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+    height: 56px;
+    width: 334px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    padding: 0 20px;
+  }
+}
+
+.cardsContainer {
+  margin-top: 10px;
+}
+
+.addCardContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardInput {
+  margin-bottom: 5px;
+}
+
+.addCardButton {
+  background-color: #28a745;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}

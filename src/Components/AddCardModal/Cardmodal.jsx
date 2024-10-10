@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./Cardmodal.module.css";
 import CalendarPicker from "../Custominput/PrimeCalendar";
 
-function Modal({
+function AddCard({
   onClose,
+  onSave,
   cardData,
   setCardData,
   setSelectedDate,
@@ -34,6 +35,7 @@ function Modal({
       deadline: editedDeadline,
     };
     setCardData(updatedData);
+    onSave(); 
     onClose();
   };
 
@@ -65,7 +67,7 @@ function Modal({
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.cardContainer}>
           <div className={styles.cardName}>
-            <h3>Edit card</h3>
+            <h3>Add Card</h3>
           </div>
 
           <div className={styles.inputContainer}>
@@ -147,4 +149,4 @@ function Modal({
   );
 }
 
-export default Modal;
+export default AddCard;

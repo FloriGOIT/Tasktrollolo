@@ -11,39 +11,75 @@ import { useState } from "react";
 
 
 
-export const Sidebar = ({handleSidebarVisibility, sidebarVisibility}) => {
+export const Sidebar = ({
+  handleSidebarVisibility,
+  sidebarVisibility,
+  handleSelectedBoard, 
+}) => {
   const [isboardmodalopen, setisboardmodalopen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
-  const [isEditCreat, setIsEditCreate ]= useState("")
-  const [selection, setSelection] = useState([])
+  const [isEditCreat, setIsEditCreate] = useState("");
+  const [selection, setSelection] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState("");
   const [helpFormData, setHelpFormData] = useState([]);
 
   const openModal = () => setisboardmodalopen(!isboardmodalopen);
-  const openHelpModal = () => {setIsHelpModalOpen(!isHelpModalOpen); };
-  const handleEditCreate = (actionType) => {setIsEditCreate(actionType); console.log(actionType)}
-  const handleNewBoard = (newBoard) => {setSelection(previous => [...selection, newBoard]); console.log("selection",selection)};
-  const handleSelectedBoard = (boardName) => {setSelectedBoard(boardName); console.log("boardName: ", boardName)}
+  const openHelpModal = () => {
+    setIsHelpModalOpen(!isHelpModalOpen);
+  };
+  const handleEditCreate = (actionType) => {
+    setIsEditCreate(actionType);
+    console.log(actionType);
+  };
+  const handleNewBoard = (newBoard) => {
+    setSelection((previous) => [...selection, newBoard]);
+    console.log("selection", selection);
+  };
 
-  
+  const handleBoardSelection = (boardName) => {
+    setSelectedBoard(boardName);
+    handleSelectedBoard(boardName); 
+  };
+
   return (
-    <div className={css.sidebarF} >
+    <div className={css.sidebarF}>
       <div>
-        <LogoSidebaR handleSidebarVisibility={handleSidebarVisibility} sidebarVisibility={sidebarVisibility}/>
+        <LogoSidebaR
+          handleSidebarVisibility={handleSidebarVisibility}
+          sidebarVisibility={sidebarVisibility}
+        />
         <section className={css.myBoardsF}>
           <h5>My boards</h5>
           <hr />
           <CreateBoarD openModal={openModal} handleEditCreate={handleEditCreate} />
           <hr />
-          {selection !== "" ? <ListOfBoardS openModal={openModal} handleEditCreate={handleEditCreate} selection={selection} handleSelectedBoard={handleSelectedBoard}/> : null}
+          {selection.length > 0 ? (
+            <ListOfBoardS
+              openModal={openModal}
+              handleEditCreate={handleEditCreate}
+              selection={selection}
+              handleSelectedBoard={handleBoardSelection} // Pass the board selection handler
+            />
+          ) : (
+            <p>No boards available. Create a new board.</p>
+          )}
         </section>
       </div>
       <div>
-          <ReachHelPing openHelpModal={openHelpModal}/>
-          <LogingOut/>
-          <BoardModaL openModal={openModal} isboardmodalopen={isboardmodalopen} isEditCreat={isEditCreat} handleNewBoard={handleNewBoard} selection={selection} selectedBoard={selectedBoard} setSelection={setSelection}/>
-  const [helpAllData, setHelpAllData]=useState([])
-          {isHelpModalOpen ? <HelpModaL openHelpModal={openHelpModal} setHelpFormData={setHelpFormData} helpFormData={helpFormData}/> : null}
+        <ReachHelPing openHelpModal={openHelpModal} />
+        <LogingOut />
+        <BoardModaL
+          openModal={openModal}
+          isboardmodalopen={isboardmodalopen}
+          isEditCreat={isEditCreat}
+          handleNewBoard={handleNewBoard}
+          selection={selection}
+          selectedBoard={selectedBoard}
+          setSelection={setSelection}
+        />
+        {isHelpModalOpen ? (
+          <HelpModaL openHelpModal={openHelpModal} setHelpFormData={setHelpFormData} helpFormData={helpFormData} />
+        ) : null}
       </div>
     </div>
   );
