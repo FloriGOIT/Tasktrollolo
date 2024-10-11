@@ -4,11 +4,9 @@ export const HeaderWrapper = styled.header`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: calc(100% - 260px);
     height: 68px;
     background: #1e1e1e;
-    color: #ffffff;
-    position: fixed; 
+    color: #ffffff; 
     top: 0; 
     left: 260px;
     z-index: 1000; 

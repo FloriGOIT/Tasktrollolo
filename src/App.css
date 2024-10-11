@@ -14,14 +14,23 @@
   transition-duration: 400ms;
   transition-timing-function: linear;
 }
+
+
+.sharedlayoutF{
+  margin: 0;
+  padding: 0;
+}
+
+
 #sidebarIsClosed {
   transform: translatex(-260px);
 }
 
-
 .selectedBoardF {
+  background-color: aquamarine;
   height: calc(100% - 70px); min-width: calc(100vw + 300px);
 }
+
 .topBarF{background-color: antiquewhite;height: 60px; min-width: calc(100vw + 300px);}
 
 .App-logo {
@@ -37,13 +46,13 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
+  box-sizing: border-box;
 }
 
 .App-link {

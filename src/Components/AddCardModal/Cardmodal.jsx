@@ -1,15 +1,27 @@
-// Modal.js
 import React, { useState, useEffect } from "react";
-import CalendarPicker from "../Custominput/PrimeCalendar";
 import styles from "./Cardmodal.module.css";
+import CalendarPicker from "../Custominput/PrimeCalendar";
 
-function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
+function AddCard({
+  onClose,
+  onSave,
+  cardData,
+  setCardData,
+  setSelectedDate,
+  isLoading,
+}) {
   const [editedTitle, setEditedTitle] = useState(cardData.title);
-  const [editedDescription, setEditedDescription] = useState(cardData.description);
+  const [editedDescription, setEditedDescription] = useState(
+    cardData.description
+  );
   const [editedPriority, setEditedPriority] = useState(cardData.priority);
-  const [editedDeadline, setEditedDeadline] = useState(new Date(cardData.deadline));
+  const [editedDeadline, setEditedDeadline] = useState(
+    new Date(cardData.deadline)
+  );
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+
+
 
   useEffect(() => {
     setSelectedDate(editedDeadline);
@@ -23,13 +35,22 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
       deadline: editedDeadline,
     };
     setCardData(updatedData);
+    onSave(); 
     onClose();
   };
 
   const priorities = [
-    { value: "No Priority", label: "No Priority", colorClass: styles.noPriorityCircle },
+    {
+      value: "No Priority",
+      label: "No Priority",
+      colorClass: styles.noPriorityCircle,
+    },
     { value: "Low", label: "Low", colorClass: styles.lowPriorityCircle },
-    { value: "Medium", label: "Medium", colorClass: styles.mediumPriorityCircle },
+    {
+      value: "Medium",
+      label: "Medium",
+      colorClass: styles.mediumPriorityCircle,
+    },
     { value: "High", label: "High", colorClass: styles.highPriorityCircle },
   ];
 
@@ -46,7 +67,7 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.cardContainer}>
           <div className={styles.cardName}>
-            <h3>{cardData.title ? "Edit card" : "Add card"}</h3>
+            <h3>Add Card</h3>
           </div>
 
           <div className={styles.inputContainer}>
@@ -69,6 +90,7 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
           <div className={styles.statusContainer}>
             <div className={styles.labelContainer}>
               <div>Priority</div>
+
               <div
                 className={styles.priorityDropdown}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -76,7 +98,8 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
                 <div className={styles.selectedOption}>
                   <div
                     className={`${styles.priorityCircle} ${
-                      priorities.find((p) => p.value === editedPriority)?.colorClass
+                      priorities.find((p) => p.value === editedPriority)
+                        ?.colorClass
                     }`}
                   ></div>
                   <span>{selectedPriorityLabel}</span>
@@ -104,6 +127,7 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
             <div className={styles.deadlineContainer}>
               <div>Deadline</div>
               <div className={styles.pickerContainer}>
+               
                 <CalendarPicker
                   value={editedDeadline}
                   onChange={(e) => setEditedDeadline(e.value)}
@@ -125,4 +149,4 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
   );
 }
 
-export default Modal;
+export default AddCard;
