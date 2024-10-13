@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa";
 
 export const AddButtoN = ({openModal, handleEditCreate}) =>
 { 
-  const setAction = (event) => { console.log("event: ", event.currentTarget.name); 
+  const setAction = (event) => {
     handleEditCreate(event.currentTarget.name)
     openModal();
   }

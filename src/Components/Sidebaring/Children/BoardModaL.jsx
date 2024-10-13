@@ -56,8 +56,6 @@ export const BoardModaL = ({
     
     const icon = event.target.closest('svg')?.id || event.target.id;
 
-    console.log("icon", icon)
-    console.log("non icon", event.target.id)
     if (icon) {
       setSelectedIconId(icon);
       setNewSelection((previous) => ({ ...previous, icon }));
@@ -117,8 +115,6 @@ export const BoardModaL = ({
 
         openModal();
         setNewSelection({ title: "", icon: "", image: "" }); // Close modal after editing
-      } else {
-        console.log("Board not found for editing");
       }
     }
   };

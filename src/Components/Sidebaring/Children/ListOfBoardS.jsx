@@ -51,15 +51,17 @@ export const ListOfBoardS = ({
     }
   };
 
-  const handleBTN = (event) => {console.log()
+  const handleBTN = (event) => {
     const boardId = event.target.closest('li').id;
     setSelectedBoard(boardId) // Setează board-ul selectat
     handleSelectedBoard(boardId);
   }
-  const handleListAfterDel = (event) => {const boardName = event.target.closest('li').id;
+  const handleListAfterDel = (event) => {
+    event.stopPropagation();
+    const boardName = event.target.closest('li').id;
     const newList = selection.filter(board => board.title !== boardName);
     setSelection(newList)
-    console.log("newList:",newList )
+
   }
   
  
