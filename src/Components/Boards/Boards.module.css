@@ -5,6 +5,7 @@
   color: #000000;
   width: calc(100vw - 225px);
   padding: 0 24px;
+  background-color:rgb(237, 243, 226);
 }
 
 .boardName {
@@ -16,7 +17,7 @@
   text-align: left;
   padding: 10px 0px 10px 34px ;
   /* color: #161616; for black theme*/
-  color: #f9f9f9;
+  color: rgba(0, 0, 0, 0.582);
   margin: 0;
 }
 

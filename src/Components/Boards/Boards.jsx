@@ -126,8 +126,7 @@ const Boards = ({ boardName, listOfBoards }) => {
     <div className={styles.boardContainer} style={{
       backgroundImage: setBackgroundImage(),
       backgroundSize: "cover",
-      backgroundPosition: "center",
-      height: "100vh",
+
     }}>
       <div className={styles.boardName}>{boardName}</div>
 
