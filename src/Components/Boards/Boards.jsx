@@ -3,15 +3,15 @@ import TrolloloCards from "../../Components/Cards/TrolloloCards";
 import styles from "./Boards.module.css";
 import Modal from "../../Components/CardModal/Cardmodal";
 import { useToggle } from "../../Components/Usetoggle/Usetoggle";
-import aiPlanetsDesk from "./Children/Pics/pinkTree-desk.jpg";
-import aiPlanetsTablet from "./Children/Pics/pinkTree-tablet.jpg";
-import aiPlanetsMob from "./Children/Pics/pinkTree-mob.jpg";
+import aiPlanetsDesk from "./Children/Pics/aiPlanets-desk.jpg";
+import aiPlanetsTablet from "./Children/Pics/aiPlanets-tablet.jpg";
+import aiPlanetsMob from "./Children/Pics/aiPlanets-mob.jpg";
 import pinkTreeDesk from "./Children/Pics/pinkTree-desk.jpg";
 import pinkTreeTablet from "./Children/Pics/pinkTree-tablet.jpg";
 import pinkTreeMob from "./Children/Pics/pinkTree-mob.jpg";
-import skyCloudDesk from "./Children/Pics/pinkTree-desk.jpg";
-import skyCloudTablet from "./Children/Pics/pinkTree-tablet.jpg";
-import skyCloudMob from "./Children/Pics/pinkTree-mob.jpg";
+import skyCloudDesk from "./Children/Pics/skyCloud-desk.jpg";
+import skyCloudTablet from "./Children/Pics/skyCloud-tablet.jpg";
+import skyCloudMob from "./Children/Pics/skyCloud-mob.jpg";
 
 const images = {
   img2: {
@@ -38,6 +38,44 @@ const Boards = ({ boardName, listOfBoards }) => {
   const [activeColumnIndex, setActiveColumnIndex] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [newColumnTitle, setNewColumnTitle] = useState("");
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const boardDetails = listOfBoards.find((board) => board.title === boardName) || {};
+
+  const setBackgroundImage = () => {
+    let imageKey = "";
+
+    switch (boardDetails.image) {
+      case "img2":
+        imageKey = images.img2;
+        break;
+      case "img3":
+        imageKey = images.img3;
+        break;
+      case "img4":
+        imageKey = images.img4;
+        break;
+      default:
+        return ""; // Return empty string for no background
+    }
+
+    if (windowWidth <= 768) {
+      return `url(${imageKey.mob})`;
+    } else if (windowWidth <= 1024) {
+      return `url(${imageKey.tablet})`;
+    }
+    return `url(${imageKey.desk})`;
+  };
 
   const handleAddColumn = () => {
     if (newColumnTitle.trim() === "") {
@@ -85,7 +123,12 @@ const Boards = ({ boardName, listOfBoards }) => {
   };
 
   return (
-    <div className={styles.boardContainer}>
+    <div className={styles.boardContainer} style={{
+      backgroundImage: setBackgroundImage(),
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      height: "100vh",
+    }}>
       <div className={styles.boardName}>{boardName}</div>
 
       <div className={styles.columnContainer}>
