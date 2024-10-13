@@ -17,8 +17,9 @@ const Dashboard = () => {
   const handleSelectedBoard = (boardName) => {
     setSelectedBoard(boardName);
   };
-
+ 
   let sidebarID = sidebarVisibility ? "sidebarIsOpen" : "sidebarIsClosed";
+  console.log("selectedBoard Adi:", selectedBoard)
 
   return (
     <div className="App" id={sidebarID}>
@@ -27,6 +28,7 @@ const Dashboard = () => {
           handleSidebarVisibility={handleSidebarVisibility}
           sidebarVisibility={sidebarVisibility}
           handleSelectedBoard={handleSelectedBoard}
+
         />
       </div>
 
@@ -37,10 +39,10 @@ const Dashboard = () => {
         </div>
 
         <div className="App-header">
-          {selectedBoard ? (
+          {selectedBoard  ? (
             <Boards boardName={selectedBoard} />
           ) : (
-            <p>Please select a board from the sidebar.</p>
+            <p>Please select a board from the sidebar.</p> // Render message if no valid board is selected
           )}
         </div>
       </div>

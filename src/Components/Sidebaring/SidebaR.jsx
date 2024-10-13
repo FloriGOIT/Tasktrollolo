@@ -14,7 +14,9 @@ import { useState } from "react";
 export const Sidebar = ({
   handleSidebarVisibility,
   sidebarVisibility,
-  handleSelectedBoard, 
+  handleSelectedBoard,
+ 
+
 }) => {
   const [isboardmodalopen, setisboardmodalopen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
@@ -33,7 +35,7 @@ export const Sidebar = ({
   };
   const handleNewBoard = (newBoard) => {
     setSelection((previous) => [...selection, newBoard]);
-    console.log("selection", selection);
+
   };
 
   const handleBoardSelection = (boardName) => {
@@ -41,6 +43,7 @@ export const Sidebar = ({
     handleSelectedBoard(boardName); 
   };
 
+  
   return (
     <div className={css.sidebarF}>
       <div>
@@ -58,7 +61,7 @@ export const Sidebar = ({
               openModal={openModal}
               handleEditCreate={handleEditCreate}
               selection={selection}
-              handleSelectedBoard={handleBoardSelection} // Pass the board selection handler
+              handleSelectedBoard={handleBoardSelection} setSelection={setSelection} // Pass the board selection handler
             />
           ) : (
             <p>No boards available. Create a new board.</p>
