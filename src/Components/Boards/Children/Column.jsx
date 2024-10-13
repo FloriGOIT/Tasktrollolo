@@ -4,6 +4,7 @@ export const Column = () => {
 return(
 <>
    <FaPlus/>
+   
 </>        
 )
 }

@@ -12,6 +12,8 @@ import pinkTreeMob from "./Children/Pics/pinkTree-mob.jpg";
 import skyCloudDesk from "./Children/Pics/skyCloud-desk.jpg";
 import skyCloudTablet from "./Children/Pics/skyCloud-tablet.jpg";
 import skyCloudMob from "./Children/Pics/skyCloud-mob.jpg";
+import { TfiPencil } from "react-icons/tfi";
+import { IoTrashOutline } from "react-icons/io5";
 
 const images = {
   img2: {
@@ -50,7 +52,8 @@ const Boards = ({ boardName, listOfBoards }) => {
     };
   }, []);
 
-  const boardDetails = listOfBoards.find((board) => board.title === boardName) || {};
+  const boardDetails =
+    listOfBoards.find((board) => board.title === boardName) || {};
 
   const setBackgroundImage = () => {
     let imageKey = "";
@@ -89,7 +92,7 @@ const Boards = ({ boardName, listOfBoards }) => {
   const openAddCardModal = (columnIndex) => {
     setActiveColumnIndex(columnIndex);
     setModalMode("add");
-    setSelectedCard({ 
+    setSelectedCard({
       title: "",
       description: "",
       priority: "No Priority",
@@ -100,72 +103,82 @@ const Boards = ({ boardName, listOfBoards }) => {
 
   const handleSaveCard = (cardData) => {
     const updatedColumns = [...columns];
-    
+
     if (modalMode === "add") {
-    
       updatedColumns[activeColumnIndex].cards.push({
-        ...cardData, 
-        priorityc: cardData.priority, 
+        ...cardData,
+        priorityc: cardData.priority,
       });
     } else if (modalMode === "edit") {
-    
       const cardIndex = updatedColumns[activeColumnIndex].cards.findIndex(
         (card) => card.title === selectedCard.title
       );
       updatedColumns[activeColumnIndex].cards[cardIndex] = {
         ...cardData,
-        priorityc: cardData.priority, 
+        priorityc: cardData.priority,
       };
     }
-  
+
     setColumns(updatedColumns);
-    close(); 
+    close();
   };
 
   return (
-    <div className={styles.boardContainer} style={{
-      backgroundImage: setBackgroundImage(),
-      backgroundSize: "cover",
-
-    }}>
+    <div
+      className={styles.boardContainer}
+      style={{
+        backgroundImage: setBackgroundImage(),
+        backgroundSize: "cover",
+      }}
+    >
       <div className={styles.boardName}>{boardName}</div>
 
       <div className={styles.columnContainer}>
         <div className={styles.columnWrapper}>
           <div className={styles.columnContent}>
-          {columns.map((column, colIndex) => (
-  <div key={colIndex} className={styles.columnContainer}>
-    <div className={styles.column}>
-      <div className={styles.columnTitle}>{column.title}</div>
-      <div className={styles.cardsContainer}>
-        {column.cards.map((card, cardIndex) => (
-          <TrolloloCards
-            key={cardIndex}
-            cardData={card} 
-            onEdit={(updatedCard) => {
-              const updatedColumns = [...columns];
-              updatedColumns[colIndex].cards[cardIndex] = updatedCard;
-              setColumns(updatedColumns);
-            }}
-            onDelete={() => {
-              const updatedColumns = [...columns];
-              updatedColumns[colIndex].cards.splice(cardIndex, 1);
-              setColumns(updatedColumns);
-            }}
-          />
-        ))}
-      </div>
-    </div>
-    <div className={styles.addCardContainer}>
-      <button
-        onClick={() => openAddCardModal(colIndex)}
-        className={styles.addCardButton}
-      >
-        Add Card
-      </button>
-    </div>
-  </div>
-))}
+            {columns.map((column, colIndex) => (
+              <div key={colIndex} className={styles.columnContainer}>
+                <div className={styles.column}>
+                  <div className={styles.columnTitle}>
+
+                    <p>{column.title}</p>
+
+                    <div className={styles.modifytitle}>
+                      <TfiPencil />
+                      <IoTrashOutline />
+                    </div>
+
+                  </div>
+                  <div className={styles.cardsContainer}>
+                    {column.cards.map((card, cardIndex) => (
+                      <TrolloloCards
+                        key={cardIndex}
+                        cardData={card}
+                        onEdit={(updatedCard) => {
+                          const updatedColumns = [...columns];
+                          updatedColumns[colIndex].cards[cardIndex] =
+                            updatedCard;
+                          setColumns(updatedColumns);
+                        }}
+                        onDelete={() => {
+                          const updatedColumns = [...columns];
+                          updatedColumns[colIndex].cards.splice(cardIndex, 1);
+                          setColumns(updatedColumns);
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.addCardContainer}>
+                  <button
+                    onClick={() => openAddCardModal(colIndex)}
+                    className={styles.addCardButton}
+                  >
+                    Add Card
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className={styles.addBtnContainer}>

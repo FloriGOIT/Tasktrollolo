@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: row;
   gap: 0;
+  
+  
 
   .colorStatus {
     width: 4px;
@@ -27,11 +29,13 @@
   .cardWrapper {
     display: flex;
     flex-direction: column;
-    width: 334px;
+    width: 310px;
     height: 100%;
     gap: 0px;
     opacity: 0px;
     background: #ffffff;
+    border-radius: 5px;
+    
 
     .containerContent {
       display: flex;

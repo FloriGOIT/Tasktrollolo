@@ -1,7 +1,7 @@
 .registrationPage {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to bottom, white, rgba(190, 219, 176, 1));
+  background: linear-gradient(to bottom, white, rgb(167, 206, 148));
 }
 .formContainer {
   display: flex;
@@ -49,7 +49,7 @@
   width: 344px;
   height: 49px;
   padding: 14px 14px 14px 18px;
-  border: 1px solid rgba(190, 219, 176, 1);
+  border: 1px solid rgb(167, 206, 148);
   background: rgba(31, 31, 31, 1);
   border-radius: 8px;
   box-sizing: border-box;
@@ -60,7 +60,7 @@
 .input:active,
 .input:focus,
 .input:hover {
-  border: 1px solid rgba(190, 219, 176, 1);
+  border: 1px solid rgb(167, 206, 148);
 }
 
 .input::placeholder {
@@ -84,7 +84,7 @@
   width: 100%;
   padding: 14px 0;
   border-radius: 8px;
-  background: rgba(190, 219, 176, 1);
+  background: rgb(167, 206, 148);
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 500;

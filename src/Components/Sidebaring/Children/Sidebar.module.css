@@ -76,7 +76,7 @@
   padding: 0px;
 }
 .sidebarVisibilityF:hover {
-  color: rgba(190, 219, 176, 1);
+  color: rgb(167, 206, 148);
 }
 .sidebarVisibilityF svg {
   width: 30px;
@@ -164,7 +164,7 @@
 }
 
 .boardsListF::-webkit-scrollbar-thumb {
-  background-color: rgba(190, 219, 176, 1); /* Color of the scrollbar thumb */
+  background-color: rgb(167, 206, 148); /* Color of the scrollbar thumb */
   border-radius: 10px; /* Optional: Round the corners of the scrollbar thumb */
 }
 
@@ -224,7 +224,7 @@
 }
 .modifyBoardF svg:hover,
 .modifyBoardF svg:focus {
-  color: rgba(190, 219, 176, 1);
+  color: rgb(167, 206, 148);
 }
 
 /*Help*/
@@ -262,7 +262,7 @@
 
 .reachHelpWrapperF .helpBtnF:hover,
 .reachHelpWrapperF .helpBtnF:focus {
-  background-color: rgba(190, 219, 176, 1);
+  background-color: rgb(167, 206, 148);
 }
 
 .reachHelpWrapperF .helpBtnF span {
@@ -308,7 +308,7 @@
   font-weight: 500;
 }
 .sidebarF .logOutF button {
-  background-color: rgba(190, 219, 176, 1);
+  background-color: rgb(167, 206, 148);
   border: none;
   border-radius: 10px;
   padding-top: 4px;
@@ -367,7 +367,7 @@
   color: rgba(0, 0, 0, 0.501);
 }
 .boardIconsF .iconModal:hover {
-  color: #bedbb0;
+  color: #86e28e;
 }
 
 .activeIcon {
@@ -411,7 +411,7 @@
 }
 .saveButtonF,
 .sendHelp {
-  background-color: rgba(190, 219, 176, 1);
+  background-color: rgb(167, 206, 148);
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -433,7 +433,7 @@
 .saveButtonF svg {
   height: 15px;
   width: 15px;
-  color: rgba(190, 219, 176, 1);
+  color: rgb(167, 206, 148);
   background-color: black;
   padding: 5px;
   border-radius: 10%;
