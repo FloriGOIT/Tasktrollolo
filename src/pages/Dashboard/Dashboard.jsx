@@ -44,7 +44,7 @@ const Dashboard = () => {
 
         <div className="App-header">
           {selectedBoard && isBoardavailable ? (
-            <Boards boardName={selectedBoard} />
+            <Boards boardName={selectedBoard} listOfBoards={listOfBoards}/>
           ) : (
             <p>Please select a board from the sidebar.</p> // Render message if no valid board is selected
           )}

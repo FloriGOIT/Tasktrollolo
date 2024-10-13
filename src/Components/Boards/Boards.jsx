@@ -1,10 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TrolloloCards from "../../Components/Cards/TrolloloCards";
 import styles from "./Boards.module.css";
 import Modal from "../../Components/CardModal/Cardmodal";
 import { useToggle } from "../../Components/Usetoggle/Usetoggle";
+import aiPlanetsDesk from "./Children/Pics/pinkTree-desk.jpg";
+import aiPlanetsTablet from "./Children/Pics/pinkTree-tablet.jpg";
+import aiPlanetsMob from "./Children/Pics/pinkTree-mob.jpg";
+import pinkTreeDesk from "./Children/Pics/pinkTree-desk.jpg";
+import pinkTreeTablet from "./Children/Pics/pinkTree-tablet.jpg";
+import pinkTreeMob from "./Children/Pics/pinkTree-mob.jpg";
+import skyCloudDesk from "./Children/Pics/pinkTree-desk.jpg";
+import skyCloudTablet from "./Children/Pics/pinkTree-tablet.jpg";
+import skyCloudMob from "./Children/Pics/pinkTree-mob.jpg";
 
-const Boards = ({ boardName }) => {
+const images = {
+  img2: {
+    desk: pinkTreeDesk,
+    tablet: pinkTreeTablet,
+    mob: pinkTreeMob,
+  },
+  img3: {
+    desk: skyCloudDesk,
+    tablet: skyCloudTablet,
+    mob: skyCloudMob,
+  },
+  img4: {
+    desk: aiPlanetsDesk,
+    tablet: aiPlanetsTablet,
+    mob: aiPlanetsMob,
+  },
+};
+
+const Boards = ({ boardName, listOfBoards }) => {
   const [columns, setColumns] = useState([]);
   const { isOpen, open, close } = useToggle();
   const [modalMode, setModalMode] = useState("add");
