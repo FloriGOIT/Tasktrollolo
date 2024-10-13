@@ -3,7 +3,7 @@
   flex-direction: row;
   gap: 0;
   
-  
+  margin-right: 5px;
 
   .colorStatus {
     width: 4px;

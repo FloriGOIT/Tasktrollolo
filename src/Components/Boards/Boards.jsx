@@ -139,7 +139,7 @@ const Boards = ({ boardName, listOfBoards }) => {
             {columns.map((column, colIndex) => (
               <div key={colIndex} className={styles.columnContainer}>
                 <div className={styles.column}>
-                  <div className={styles.columnTitle}>
+                  <div className={styles.columnTitle} name={column.title}>
 
                     <p>{column.title}</p>
 
