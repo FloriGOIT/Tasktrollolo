@@ -184,6 +184,11 @@ span {
     border-radius: 8px;
     padding: 0 20px;
 
+
+    .editFormColumn input{  padding: 3px 0px 3px 4px; border-radius: 5px;}
+    .editFormColumn button{ font-size: 13px; font-weight: 500; margin-left: 10px; background-color: black; color: white;  border-radius: 5px; padding: 2px 4px}
+    .editFormColumn button:hover{background-color: rgba(0, 0, 0, 0.582)}
+
     .modifytitle {display: flex; gap: 10px; font-size: 18px;}
     .modifytitle svg:hover{color: rgb(128, 180, 102)}
   }

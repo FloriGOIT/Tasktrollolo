@@ -49,6 +49,8 @@ export const BoardModaL = ({
 
   const handleBoardTitle = (event) => {
     const title = event.target.value;
+    const duplicatedTitleBoard = selection.some(board => board.title.toLowerCase() === title.toLowerCase())
+    if(duplicatedTitleBoard){alert("This board name is already used. Please use other title."); }
     setNewSelection((previous) => ({ ...previous, title }));
   };
 

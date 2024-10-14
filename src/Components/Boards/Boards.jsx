@@ -39,6 +39,11 @@ const Boards = ({ boardName, listOfBoards }) => {
   const [modalMode, setModalMode] = useState("add");
   const [activeColumnIndex, setActiveColumnIndex] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [columnTitleAfterEdit, setColumnTitleAfterEdit] = useState("");
+  const [columnTitleBeforeEdit, setColumnTitleBeforeEdit] = useState("");
+
   const [newColumnTitle, setNewColumnTitle] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -51,6 +56,7 @@ const Boards = ({ boardName, listOfBoards }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+;
 
   const boardDetails =
     listOfBoards.find((board) => board.title === boardName) || {};
@@ -85,10 +91,50 @@ const Boards = ({ boardName, listOfBoards }) => {
       alert("Please enter a column title.");
       return;
     }
+    const duplicatedTitleColumn = columns.some(
+      (column) => column.title.toLowerCase() === newColumnTitle.toLowerCase()
+    );
+    if (duplicatedTitleColumn) {
+      alert("This column name is already used. Please use other title.");
+      return;
+    }
 
     setColumns([...columns, { title: newColumnTitle, cards: [] }]);
     setNewColumnTitle("");
   };
+
+  const handleEditColumn = (event) => {
+    const columnName = event.currentTarget.parentElement.parentElement.getAttribute('name');
+    setColumnTitleBeforeEdit(columnName); 
+    setColumnTitleAfterEdit(columnName); 
+    console.log("before:", columns)
+    setIsEditing(true); }
+
+
+  const handleTitleColumnChange = (event) => {
+    setColumnTitleAfterEdit(event.target.value); 
+  };
+
+
+  const handleSave = (event) => {
+    event.preventDefault();
+    setColumns((prevColumns) =>
+      prevColumns.map((col) =>
+        col.title === columnTitleBeforeEdit ? { ...col, title: columnTitleAfterEdit } : col
+      )
+    );
+    console.log("after:", columns)
+    setIsEditing(false);
+  };
+
+  const handleListAfterDel = (event) => {
+    event.stopPropagation();
+    const columnName = event.currentTarget.parentElement.parentElement.getAttribute('name');
+    const newList = columns.filter(column => column.title !== columnName);
+    setColumns(newList)
+
+  }
+
   const openAddCardModal = (columnIndex) => {
     setActiveColumnIndex(columnIndex);
     setModalMode("add");
@@ -121,6 +167,7 @@ const Boards = ({ boardName, listOfBoards }) => {
 
     setColumns(updatedColumns);
     close();
+    console.log("columns: ", columns);
   };
 
   return (
@@ -140,13 +187,27 @@ const Boards = ({ boardName, listOfBoards }) => {
               <div key={colIndex} className={styles.columnContainer}>
                 <div className={styles.column}>
                   <div className={styles.columnTitle} name={column.title}>
+                   
+                  {isEditing && column.title === columnTitleBeforeEdit ? (
 
-                    <p>{column.title}</p>
-
-                    <div className={styles.modifytitle}>
-                      <TfiPencil />
-                      <IoTrashOutline />
-                    </div>
+                <form className={styles.editFormColumn} onSubmit={handleSave}>
+                  <input
+                    type="text"
+                    value={columnTitleAfterEdit} 
+                    onChange={handleTitleColumnChange} 
+                  />
+                  <button type="submit">Save</button>
+                </form>
+              ) : (
+    
+                <>
+                  <p>{column.title}</p>
+                  <div className={styles.modifytitle}>
+                    <TfiPencil onClick={handleEditColumn} />
+                    <IoTrashOutline onClick={handleListAfterDel}/>
+                  </div>
+                </>
+              )}
 
                   </div>
                   <div className={styles.cardsContainer}>
@@ -215,6 +276,7 @@ const Boards = ({ boardName, listOfBoards }) => {
           setCardData={handleSaveCard}
           setSelectedDate={() => {}}
           isLoading={false}
+          columns={columns}
         />
       )}
     </div>
