@@ -480,18 +480,8 @@
 }
 @media screen and (min-height: 500px) {
   .boardsListF {
-    height: calc(100vh - 550px);
+    height: calc(100vh - 508px);
   }
 }
 
-@media screen and (min-height: 700px) {
-  .boardsListF {
-    height: calc(100vh - 500px);
-  }
-}
 
-@media screen and (min-height: 900px) {
-  .boardsListF {
-    height: calc(100vh - 520px);
-  }
-}

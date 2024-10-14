@@ -76,13 +76,13 @@ function TrolloloCards({ cardData, onEdit, onDelete }) {
 
   return (
     <>
-      <div className={styles.containerCard}>
+      <div className={styles.containerCard} name={cardData.title}>
       <div className={`${styles.colorStatus} ${getPriorityColor()}`}></div>
 
         <div className={styles.cardWrapper}>
           <div className={styles.containerContent}>
             <div className={styles.titleCard}>
-              <span className={styles.titleText}>{cardData.title}</span>
+              <span className={styles.titleText} >{cardData.title}</span>
             </div>
             <div className={styles.commentCard}>
               <div className={styles.commentText}>{cardData.description}</div>

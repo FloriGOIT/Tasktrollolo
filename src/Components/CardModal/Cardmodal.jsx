@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import CalendarPicker from "../Custominput/PrimeCalendar";
 import styles from "./Cardmodal.module.css";
 
-function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
+function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading, columns }) {
   const [editedTitle, setEditedTitle] = useState(cardData.title);
   const [editedDescription, setEditedDescription] = useState(cardData.description);
   const [editedPriority, setEditedPriority] = useState(cardData.priority);
@@ -16,6 +16,8 @@ function Modal({ onClose, cardData, setCardData, setSelectedDate, isLoading }) {
   }, [editedDeadline, setSelectedDate]);
 
   const handleSave = () => {
+    
+
     const updatedData = {
       title: editedTitle,
       description: editedDescription,
