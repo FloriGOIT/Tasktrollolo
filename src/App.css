@@ -53,7 +53,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
   box-sizing: border-box;
+  #selectBoard{padding-left: 20px;}
 }
+
 
 .App-link {
   color: #61dafb;

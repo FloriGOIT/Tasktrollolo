@@ -92,8 +92,7 @@ const Boards = ({ boardName, listOfBoards }) => {
       return;
     }
     const duplicatedTitleColumn = columns.some(
-      (column) => column.title.toLowerCase() === newColumnTitle.toLowerCase()
-    );
+      (column) => column.title === newColumnTitle);
     if (duplicatedTitleColumn) {
       alert("This column name is already used. Please use other title.");
       return;
@@ -210,9 +209,10 @@ const Boards = ({ boardName, listOfBoards }) => {
               )}
 
                   </div>
-                  <div className={styles.cardsContainer}>
+                  <div className={styles.cardsContainer} name={column.title}>
                     {column.cards.map((card, cardIndex) => (
                       <TrolloloCards
+                        
                         key={cardIndex}
                         cardData={card}
                         onEdit={(updatedCard) => {
