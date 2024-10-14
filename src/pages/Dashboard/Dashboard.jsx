@@ -9,6 +9,7 @@ const Dashboard = () => {
   const [sidebarVisibility, setSidebarVisibility] = useState(true);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const { user, loading, error } = useUser();
+  const [listOfBoards, setListOfBoards] = useState([])
 
   const handleSidebarVisibility = () => {
     setSidebarVisibility(!sidebarVisibility);
@@ -17,8 +18,12 @@ const Dashboard = () => {
   const handleSelectedBoard = (boardName) => {
     setSelectedBoard(boardName);
   };
-
+  const handleListOfBoards = (list) =>
+  {setListOfBoards(list)}
+ 
   let sidebarID = sidebarVisibility ? "sidebarIsOpen" : "sidebarIsClosed";
+
+  let isBoardavailable = listOfBoards.some(board => board.title === selectedBoard)
 
   return (
     <div className="App" id={sidebarID}>
@@ -27,6 +32,7 @@ const Dashboard = () => {
           handleSidebarVisibility={handleSidebarVisibility}
           sidebarVisibility={sidebarVisibility}
           handleSelectedBoard={handleSelectedBoard}
+          handleListOfBoards={handleListOfBoards}
         />
       </div>
 
@@ -37,10 +43,10 @@ const Dashboard = () => {
         </div>
 
         <div className="App-header">
-          {selectedBoard ? (
-            <Boards boardName={selectedBoard} />
+          {selectedBoard && isBoardavailable ? (
+            <Boards boardName={selectedBoard} listOfBoards={listOfBoards}/>
           ) : (
-            <p>Please select a board from the sidebar.</p>
+            <p>Please select a board from the sidebar.</p> // Render message if no valid board is selected
           )}
         </div>
       </div>

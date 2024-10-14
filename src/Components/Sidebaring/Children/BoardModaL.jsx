@@ -11,7 +11,7 @@ import { FaPhoenixFramework } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
 import { CiImageOff } from "react-icons/ci";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 import aiPlanetsDesk from "./SVGs/aiPlanets-desk.jpg";
 import pinkTreeDesk from "./SVGs/pinkTree-desk.jpg";
@@ -34,7 +34,18 @@ export const BoardModaL = ({
     image: "",
   });
 
+
+
+  useEffect(() => {
+    if (isEditCreat === "Edit board" && selectedBoard) {
+      setNewSelection((previous) => ({ ...previous,
+        title: selectedBoard
+      }));
+    }
+  }, [isEditCreat, selectedBoard]);
+
   if (!isboardmodalopen) return null;
+
 
   const handleBoardTitle = (event) => {
     const title = event.target.value;
@@ -42,11 +53,12 @@ export const BoardModaL = ({
   };
 
   const handleSelectIcon = (event) => {
-    const icon = event.target.id;
+    
+    const icon = event.target.closest('svg')?.id || event.target.id;
+
     if (icon) {
       setSelectedIconId(icon);
       setNewSelection((previous) => ({ ...previous, icon }));
-      console.log("icon", icon);
     } else {
       console.error("No valid icon selected");
     }
@@ -57,11 +69,11 @@ export const BoardModaL = ({
     if (image) {
       setSelectedImgId(image); // Setează ID-ul imaginii selectate
       setNewSelection((previous) => ({ ...previous, image }));
-      console.log("image", image);
     }
   };
 
   const handleSaveBtn = (event) => {
+
     event.preventDefault();
     if (isEditCreat === "Create board") {
       if (newSelection.icon === "") {
@@ -71,7 +83,6 @@ export const BoardModaL = ({
         alert("Please select an image");
         return;
       }
-      console.log(newSelection);
       if (selection.some((board) => board.title === newSelection.title)) {
         alert("The title is already in use");
       } else {
@@ -104,11 +115,10 @@ export const BoardModaL = ({
 
         openModal();
         setNewSelection({ title: "", icon: "", image: "" }); // Close modal after editing
-      } else {
-        console.log("Board not found for editing");
       }
     }
   };
+  
 
   return createPortal(
     <form className={css.boardDetailsModalF} onSubmit={handleSaveBtn}>

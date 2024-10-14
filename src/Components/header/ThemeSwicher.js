@@ -61,7 +61,7 @@ const ThemeSwitcher = ({ toggleTheme }) => {
     return (
         <div style={{ position: 'relative' }}>
             <SwitcherButton onClick={handleToggleDropdown}>
-                Switch Theme
+               Theme
                 <Arrow />
             </SwitcherButton>
             <Dropdown isOpen={isOpen}>

@@ -16,6 +16,7 @@ export const ListOfBoardS = ({
   openModal,
   handleEditCreate,
   selection,
+  setSelection,
   handleSelectedBoard,
 }) => {
  
@@ -24,6 +25,7 @@ export const ListOfBoardS = ({
     handleEditCreate(event.currentTarget.name);
     openModal();
     handleSelectedBoard(event.target.closest("li").id);
+
   };
 
   const iconSeen = (icon) => {
@@ -51,11 +53,18 @@ export const ListOfBoardS = ({
 
   const handleBTN = (event) => {
     const boardId = event.target.closest('li').id;
-    setSelectedBoard(boardId); // Setează board-ul selectat
+    setSelectedBoard(boardId) // Setează board-ul selectat
     handleSelectedBoard(boardId);
   }
+  const handleListAfterDel = (event) => {
+    event.stopPropagation();
+    const boardName = event.target.closest('li').id;
+    const newList = selection.filter(board => board.title !== boardName);
+    setSelection(newList)
 
-
+  }
+  
+ 
   return (
     <ul className={css.boardsListF}>
       {selection.map((el, index) => (
@@ -63,7 +72,7 @@ export const ListOfBoardS = ({
           key={index} 
           id={el.title} 
           onClick={handleBTN}
-          className={selectedBoard === el.title ? css.activeBoard : ""} // Aplica clasa activă dacă board-ul este selectat
+          className={selectedBoard === el.title  ? css.activeBoard : ""} // Aplica clasa activă dacă board-ul este selectat
         >
           <div className={css.namingBoardF}>
             <p>{iconSeen(el.icon)}</p>
@@ -73,7 +82,7 @@ export const ListOfBoardS = ({
             <button name="Edit board" onClick={setAction}>
               <TfiPencil/>
             </button>
-            <button>
+            <button onClick={handleListAfterDel}>
               <IoTrashOutline />
             </button>
           </div>

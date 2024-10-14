@@ -7,14 +7,15 @@ import { LogoSidebaR } from "../Sidebaring/Children/LogoSidebaR";
 import { CreateBoarD } from "../Sidebaring/Children/CreateBoarD";
 import {BoardModaL} from "../Sidebaring/Children/BoardModaL";
 import {HelpModaL} from "../Sidebaring/Children/HelpModaL";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 
 export const Sidebar = ({
   handleSidebarVisibility,
   sidebarVisibility,
-  handleSelectedBoard, 
+  handleSelectedBoard,
+  handleListOfBoards
 }) => {
   const [isboardmodalopen, setisboardmodalopen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
@@ -29,11 +30,9 @@ export const Sidebar = ({
   };
   const handleEditCreate = (actionType) => {
     setIsEditCreate(actionType);
-    console.log(actionType);
   };
   const handleNewBoard = (newBoard) => {
     setSelection((previous) => [...selection, newBoard]);
-    console.log("selection", selection);
   };
 
   const handleBoardSelection = (boardName) => {
@@ -41,6 +40,12 @@ export const Sidebar = ({
     handleSelectedBoard(boardName); 
   };
 
+
+  useEffect(() => {
+  handleListOfBoards(selection)
+    // You can trigger additional side effects here if needed
+  }, [handleListOfBoards, selection]);
+  
   return (
     <div className={css.sidebarF}>
       <div>
@@ -58,7 +63,7 @@ export const Sidebar = ({
               openModal={openModal}
               handleEditCreate={handleEditCreate}
               selection={selection}
-              handleSelectedBoard={handleBoardSelection} // Pass the board selection handler
+              handleSelectedBoard={handleBoardSelection} setSelection={setSelection} // Pass the board selection handler
             />
           ) : (
             <p>No boards available. Create a new board.</p>

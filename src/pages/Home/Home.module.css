@@ -8,7 +8,9 @@
   width: 100%;
   margin: 0 auto;
   gap: 20px;
+
   background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #BEDBB0 92.19%);
+
 }
 
 .image {

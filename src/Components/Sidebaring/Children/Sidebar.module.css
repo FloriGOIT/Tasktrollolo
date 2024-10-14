@@ -60,6 +60,8 @@
   padding: 5px;
   font-size: 20px;
   border-radius: 10%;
+  font-size: 30px;
+ 
 }
 
 .sidebarVisibilityF {
@@ -76,7 +78,7 @@
   padding: 0px;
 }
 .sidebarVisibilityF:hover {
-  color: rgba(190, 219, 176, 1);
+  color: rgb(167, 206, 148);
 }
 .sidebarVisibilityF svg {
   width: 30px;
@@ -143,21 +145,16 @@
   background-color: rgb(128, 180, 102);
 }
 .boardsListF {
-  padding-inline-start: 10px;
+  padding-inline-start: 1px;
+  padding-inline-end: 1px;
   width: inherit;
   overflow-y: auto;
   height: calc(100vh - 470px);
-  border: 1px dotted rgba(182, 179, 179, 0.479);
+  border: 2px dotted rgba(182, 179, 179, 0.479);
   border-radius: 10px;
+  
 }
 
-
-.activeBoard {
-  border: 1px solid #007bff; 
-  color: white; 
-  border-radius: 8px;
-
-}
 
 .boardsListF::-webkit-scrollbar {
   width: 4px;
@@ -169,7 +166,7 @@
 }
 
 .boardsListF::-webkit-scrollbar-thumb {
-  background-color: rgba(190, 219, 176, 1); /* Color of the scrollbar thumb */
+  background-color: rgb(167, 206, 148); /* Color of the scrollbar thumb */
   border-radius: 10px; /* Optional: Round the corners of the scrollbar thumb */
 }
 
@@ -199,13 +196,18 @@
 
 .namingBoardF {
   padding: 0px;
-  margin-left: 5px;
-}
+  margin-left: 5px;}
 
 .boardsListF li div > p {
   margin: 0px 10px 0px 0px;
-  color: rgb(0, 0, 0);
+  color: black;
 }
+.activeBoard {
+  border: 2px solid rgb(128, 180, 102); 
+  border-radius: 8px;
+  font-style: italic;
+}
+
 .boardsListF li div > p:first-child {
   padding-top: 5px;
 }
@@ -224,7 +226,7 @@
 }
 .modifyBoardF svg:hover,
 .modifyBoardF svg:focus {
-  color: rgba(190, 219, 176, 1);
+  color: rgb(167, 206, 148);
 }
 
 /*Help*/
@@ -262,7 +264,7 @@
 
 .reachHelpWrapperF .helpBtnF:hover,
 .reachHelpWrapperF .helpBtnF:focus {
-  background-color: rgba(190, 219, 176, 1);
+  background-color: rgb(167, 206, 148);
 }
 
 .reachHelpWrapperF .helpBtnF span {
@@ -308,7 +310,7 @@
   font-weight: 500;
 }
 .sidebarF .logOutF button {
-  background-color: rgba(190, 219, 176, 1);
+  background-color: rgb(167, 206, 148);
   border: none;
   border-radius: 10px;
   padding-top: 4px;
@@ -346,7 +348,7 @@
   line-height: 27px;
   letter-spacing: -0.02em;
   text-align: left;
-  margin: 5px;
+  margin-bottom: 10px;
 }
 .helpModalF form input,
 .boardDetailsModalF input {
@@ -367,7 +369,7 @@
   color: rgba(0, 0, 0, 0.501);
 }
 .boardIconsF .iconModal:hover {
-  color: #bedbb0;
+  color: #86e28e;
 }
 
 .activeIcon {
@@ -411,7 +413,7 @@
 }
 .saveButtonF,
 .sendHelp {
-  background-color: rgba(190, 219, 176, 1);
+  background-color: rgb(167, 206, 148);
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -433,7 +435,7 @@
 .saveButtonF svg {
   height: 15px;
   width: 15px;
-  color: rgba(190, 219, 176, 1);
+  color: rgb(167, 206, 148);
   background-color: black;
   padding: 5px;
   border-radius: 10%;
