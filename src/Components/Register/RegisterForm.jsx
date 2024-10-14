@@ -62,7 +62,7 @@ const RegistrationForm = () => {
           {({ isSubmitting }) => (
             <Form autoComplete="off">
               <div className={css.formDiv}>
-                <div>
+                <div className={css.inputDiv}>
                   <Field
                     name="name"
                     type="text"
@@ -75,7 +75,7 @@ const RegistrationForm = () => {
                     className={css.error}
                   />
                 </div>
-                <div>
+                <div className={css.inputDiv}>
                   <Field
                     name="email"
                     type="email"
@@ -88,7 +88,7 @@ const RegistrationForm = () => {
                     className={css.error}
                   />
                 </div>
-                <div className={css.passwordContainer}>
+                <div className={css.inputDiv}>
                   <Field
                     name="password"
                     type={"password"}

@@ -35,25 +35,17 @@ export const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
-      console.log("Credentials being sent:", credentials); // Verifică datele trimise
-
       const res = await axios.post("/auth/register", credentials);
-
-      console.log("Response from server:", res); // Verifică întregul răspuns
 
       if (res.status === 201) {
         const token = res.data.data.token;
-        const name = res.data.data.user.name; 
+        const name = res.data.data.user.name;
 
         saveTokenToLocalStorage(token);
         setAuthHeader(token);
 
-        Notiflix.Notify.success(
-          `Welcome, ${name.toUpperCase()}!` 
-        );
+        Notiflix.Notify.success(`Welcome, ${name.toUpperCase()}!`);
       }
-
-      console.log("Response data:", res.data); // Verifică datele specifice din răspuns
 
       return res.data;
     } catch (error) {
@@ -69,7 +61,6 @@ export const register = createAsyncThunk(
     }
   }
 );
-
 
 export const login = createAsyncThunk(
   "auth/login",
